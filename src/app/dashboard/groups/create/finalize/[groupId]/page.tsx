@@ -1,0 +1,224 @@
+"use client"
+
+import type React from "react"
+import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Label } from "@/components/ui/label"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Alert, AlertDescription } from "@/components/ui/alert"
+import { Separator } from "@/components/ui/separator"
+import { Loader2, XCircle } from "lucide-react"
+import { api } from "@/lib/api"
+import type { InvestmentGroup, CompleteCreateGroupPayload } from "@/lib/types"
+import { useToast } from "@/components/ui/use-toast"
+
+interface FinalizeGroupCreationPageProps {
+  params: {
+    groupId: string
+  }
+}
+
+export default function FinalizeGroupCreationPage({ params }: FinalizeGroupCreationPageProps) {
+  const { groupId } = params
+  const router = useRouter()
+  const { toast } = useToast()
+  const queryClient = useQueryClient()
+
+  const [paymentMethod, setPaymentMethod] = useState<"wallet" | "others">("wallet")
+  const [error, setError] = useState<string | null>(null)
+
+  // Fetch group details to get initial contribution amount
+  const {
+    data: groupDetails,
+    isLoading: isLoadingGroup,
+    isError: isErrorGroup,
+    error: groupError,
+  } = useQuery<InvestmentGroup>({
+    queryKey: ["groupDetails", groupId],
+    queryFn: () => api.getGroupDetails(groupId).then((res) => res.data),
+    enabled: !!groupId,
+  })
+
+  // Fetch wallet balance
+  const { data: walletBalance = 0, isLoading: isLoadingWalletBalance } = useQuery<number>({
+    queryKey: ["walletBalance"],
+    queryFn: () => api.getWalletBalance().then((res) => res.balance || 0),
+  })
+
+  const completeGroupMutation = useMutation({
+    mutationFn: async (payload: CompleteCreateGroupPayload) => {
+      return api.completeCreateGroup(payload)
+    },
+    onSuccess: (data) => {
+      if (data.status === "success") {
+        toast({
+          title: "Group Created!",
+          description: data.message || "Investment group created successfully! Redirecting to My Groups...",
+        })
+        queryClient.invalidateQueries({ queryKey: ["activeGroups"] })
+        queryClient.invalidateQueries({ queryKey: ["myGroups"] })
+        queryClient.invalidateQueries({ queryKey: ["walletBalance"] })
+        setTimeout(() => {
+          router.push("/dashboard/groups")
+        }, 2000)
+      } else if (data.status === "error" && data.createDetails?.paymentLink) {
+        // This case should ideally not happen if backend correctly redirects for 'others'
+        // but as a fallback, if a paymentLink is returned, redirect the user.
+        window.location.href = data.createDetails.paymentLink
+      } else {
+        setError(data.message || "Failed to finalize group creation.")
+        toast({
+          title: "Error",
+          description: data.message || "Failed to finalize group creation.",
+          variant: "destructive",
+        })
+      }
+    },
+    onError: (err: any) => {
+      console.error("Failed to finalize group:", err)
+      setError(err.message || "Failed to finalize investment group.")
+      toast({
+        title: "Error",
+        description: err.message || "An unexpected error occurred.",
+        variant: "destructive",
+      })
+    },
+  })
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setError(null)
+
+    if (!groupDetails) {
+      setError("Group details not loaded. Please try again.")
+      return
+    }
+
+    const initialContributionCost = groupDetails.slotPrice * groupDetails.creatorInitialSlots
+
+    if (paymentMethod === "wallet" && walletBalance < initialContributionCost) {
+      setError(
+        "Insufficient wallet balance for your initial contribution. Please fund your wallet or choose card payment.",
+      )
+      toast({
+        title: "Insufficient Balance",
+        description: "Insufficient wallet balance for your initial contribution.",
+        variant: "destructive",
+      })
+      return
+    }
+
+    try {
+      await completeGroupMutation.mutateAsync({
+        group_id: groupId,
+        paymentMethod: paymentMethod,
+      })
+    } catch (err) {
+      // Error handled by mutation's onError
+    }
+  }
+
+  const isLoadingPage = isLoadingGroup || isLoadingWalletBalance || completeGroupMutation.isPending
+
+  if (isLoadingPage) {
+    return (
+      <div className="flex items-center justify-center min-h-[400px]">
+        <Loader2 className="h-12 w-12 animate-spin text-green-600" />
+      </div>
+    )
+  }
+
+  if (isErrorGroup || !groupDetails) {
+    return (
+      <div className="text-center py-12">
+        <h2 className="text-xl font-semibold text-red-600">Error loading group details</h2>
+        <p className="text-muted-foreground">{groupError?.message || "Failed to fetch group data."}</p>
+        <Button onClick={() => router.push("/dashboard/groups/create")} className="mt-4">
+          Go back to Create Group
+        </Button>
+      </div>
+    )
+  }
+
+  const initialContributionCost = groupDetails.slotPrice * groupDetails.creatorInitialSlots
+  const canAffordWithWallet = walletBalance >= initialContributionCost
+
+  return (
+    <div className="px-4 py-6 sm:px-0">
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-gray-900">Finalize Group Creation</h1>
+        <p className="text-gray-600 mt-2">Complete your initial contribution to activate "{groupDetails.groupName}".</p>
+      </div>
+      <Card className="w-full max-w-2xl mx-auto">
+        <CardHeader>
+          <CardTitle>Payment for Initial Contribution</CardTitle>
+          <CardDescription>You are about to make the initial contribution for your group.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="bg-gray-50 p-4 rounded-lg space-y-2">
+              <div className="flex justify-between">
+                <span>Group Name:</span>
+                <span className="font-semibold">{groupDetails.groupName}</span>
+              </div>
+              <div className="flex justify-between">
+                <span>Your Initial Slots:</span>
+                <span className="font-semibold">{groupDetails.creatorInitialSlots}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-lg font-semibold">Total Amount Due:</span>
+                <span className="text-2xl font-bold text-green-600">₦{initialContributionCost.toLocaleString()}</span>
+              </div>
+            </div>
+
+            <Separator />
+
+            {/* Payment Method */}
+            <div className="space-y-3">
+              <Label>Select Payment Method</Label>
+              <RadioGroup value={paymentMethod} onValueChange={(value: "wallet" | "others") => setPaymentMethod(value)}>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="wallet" id="wallet" />
+                  <Label htmlFor="wallet" className="flex-1">
+                    <div className="flex justify-between">
+                      <span>Wallet Balance</span>
+                      <span
+                        className={
+                          canAffordWithWallet && initialContributionCost > 0 ? "text-green-600" : "text-red-600"
+                        }
+                      >
+                        ₦{walletBalance.toLocaleString()}
+                      </span>
+                    </div>
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="others" id="others" />
+                  <Label htmlFor="others">Card/Bank Transfer</Label>
+                </div>
+              </RadioGroup>
+            </div>
+
+            {error && (
+              <Alert variant="destructive">
+                <XCircle className="h-4 w-4" />
+                <AlertDescription>{error}</AlertDescription>
+              </Alert>
+            )}
+
+            <Button
+              type="submit"
+              className="w-full bg-green-600 text-white hover:bg-green-700"
+              disabled={completeGroupMutation.isPending || (paymentMethod === "wallet" && !canAffordWithWallet)}
+            >
+              {completeGroupMutation.isPending ? "Processing Payment..." : "Confirm Payment & Activate Group"}
+            </Button>
+          </form>
+        </CardContent>
+      </Card>
+    </div>
+  )
+}
