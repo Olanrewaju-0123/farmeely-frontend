@@ -10,10 +10,11 @@ import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Separator } from "@/components/ui/separator"
-import { Loader2, XCircle } from "lucide-react"
+import { ArrowLeft, Loader2, XCircle } from "lucide-react"
 import { api } from "@/lib/api"
-import type { InvestmentGroup, CompleteCreateGroupPayload } from "@/lib/types"
+import type { Group, CompleteCreateGroupPayload } from "@/lib/types"
 import { useToast } from "@/components/ui/use-toast"
+import { useAuth } from "@/lib/auth-context"
 
 interface FinalizeGroupCreationPageProps {
   params: {
@@ -27,6 +28,8 @@ export default function FinalizeGroupCreationPage({ params }: FinalizeGroupCreat
   const { toast } = useToast()
   const queryClient = useQueryClient()
 
+  const {token } = useAuth()
+
   const [paymentMethod, setPaymentMethod] = useState<"wallet" | "others">("wallet")
   const [error, setError] = useState<string | null>(null)
 
@@ -36,27 +39,29 @@ export default function FinalizeGroupCreationPage({ params }: FinalizeGroupCreat
     isLoading: isLoadingGroup,
     isError: isErrorGroup,
     error: groupError,
-  } = useQuery<InvestmentGroup>({
+  } = useQuery<Group>({
     queryKey: ["groupDetails", groupId],
-    queryFn: () => api.getGroupDetails(groupId).then((res) => res.data),
-    enabled: !!groupId,
+    queryFn: () => api.getGroupDetails(groupId, token as string).then((res) => res.data),
+    enabled: !!groupId, 
   })
+  console.log("data:", groupDetails.slotTaken)
 
   // Fetch wallet balance
   const { data: walletBalance = 0, isLoading: isLoadingWalletBalance } = useQuery<number>({
     queryKey: ["walletBalance"],
-    queryFn: () => api.getWalletBalance().then((res) => res.balance || 0),
+    queryFn: () => api.getWalletBalance(token as string).then((res) => res.data?.balance || 0),
   })
 
   const completeGroupMutation = useMutation({
-    mutationFn: async (payload: CompleteCreateGroupPayload) => {
-      return api.completeCreateGroup(payload)
+    // mutationFn: async (payload: CompleteCreateGroupPayload) => {
+    mutationFn: async (payload: { groupId: string, paymentMethod: string, paymentReference?: string }) => {
+      return api.completeCreateGroup(payload, token as string )
     },
     onSuccess: (data) => {
       if (data.status === "success") {
         toast({
           title: "Group Created!",
-          description: data.message || "Investment group created successfully! Redirecting to My Groups...",
+          description: data.message || "Livestock group created successfully! Redirecting to My Groups...",
         })
         queryClient.invalidateQueries({ queryKey: ["activeGroups"] })
         queryClient.invalidateQueries({ queryKey: ["myGroups"] })
@@ -64,10 +69,11 @@ export default function FinalizeGroupCreationPage({ params }: FinalizeGroupCreat
         setTimeout(() => {
           router.push("/dashboard/groups")
         }, 2000)
-      } else if (data.status === "error" && data.createDetails?.paymentLink) {
+      // } else if (data.status === "error" && data.data?.paymentLink) {
+      } else if (data.createDetails?.paymentLink) {
         // This case should ideally not happen if backend correctly redirects for 'others'
         // but as a fallback, if a paymentLink is returned, redirect the user.
-        window.location.href = data.createDetails.paymentLink
+        window.location.href = data.data?.paymentLink
       } else {
         setError(data.message || "Failed to finalize group creation.")
         toast({
@@ -97,7 +103,7 @@ export default function FinalizeGroupCreationPage({ params }: FinalizeGroupCreat
       return
     }
 
-    const initialContributionCost = groupDetails.slotPrice * groupDetails.creatorInitialSlots
+    const initialContributionCost = groupDetails.slotPrice * (groupDetails.creatorInitialSlots || 1)
 
     if (paymentMethod === "wallet" && walletBalance < initialContributionCost) {
       setError(
@@ -113,7 +119,7 @@ export default function FinalizeGroupCreationPage({ params }: FinalizeGroupCreat
 
     try {
       await completeGroupMutation.mutateAsync({
-        group_id: groupId,
+        groupId: groupId,
         paymentMethod: paymentMethod,
       })
     } catch (err) {
@@ -123,7 +129,7 @@ export default function FinalizeGroupCreationPage({ params }: FinalizeGroupCreat
 
   const isLoadingPage = isLoadingGroup || isLoadingWalletBalance || completeGroupMutation.isPending
 
-  if (isLoadingPage) {
+  if (isLoadingPage || isLoadingWalletBalance) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
         <Loader2 className="h-12 w-12 animate-spin text-green-600" />
@@ -137,6 +143,7 @@ export default function FinalizeGroupCreationPage({ params }: FinalizeGroupCreat
         <h2 className="text-xl font-semibold text-red-600">Error loading group details</h2>
         <p className="text-muted-foreground">{groupError?.message || "Failed to fetch group data."}</p>
         <Button onClick={() => router.push("/dashboard/groups/create")} className="mt-4">
+          <ArrowLeft className="h-4 w-4 mr-2" />
           Go back to Create Group
         </Button>
       </div>
@@ -149,6 +156,14 @@ export default function FinalizeGroupCreationPage({ params }: FinalizeGroupCreat
   return (
     <div className="px-4 py-6 sm:px-0">
       <div className="mb-8">
+        <Button
+          variant="ghost"
+          onClick={() => router.back()}
+          className="mb-4"
+        >
+          <ArrowLeft className="h-4 w-4 mr-2" />
+          Back
+        </Button>
         <h1 className="text-3xl font-bold text-gray-900">Finalize Group Creation</h1>
         <p className="text-gray-600 mt-2">Complete your initial contribution to activate "{groupDetails.groupName}".</p>
       </div>

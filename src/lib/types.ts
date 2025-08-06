@@ -7,16 +7,16 @@ export interface ApiResponse<T = any> {
 }
 
 export interface User {
-  id: string
-  email: string
-  firstName?: string
-  lastName?: string
-  phone?: string
-  address?: string
-  role?: string
-  isVerified?: boolean
-  createdAt?: string
-  updatedAt?: string
+  id: string; // Maps to user_id
+  email: string;
+ othernames?: string; // Updated to match backend/auth-context
+  surname?: string; // Updated to match backend/auth-context
+  phone?: string; // Maps to phoneNumber
+  address?: string;
+  role?: "user" | "admin";
+  isVerified?: boolean; // Maps to is_email_verified
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface LoginPayload {
@@ -48,30 +48,60 @@ export interface VerifyEmailPayload {
 }
 
 export interface CreateGroupPayload {
-  group_name: string
-  group_description: string
-  total_slots: number
-  price_per_slot: number
-  livestock_id: number
-  start_date: string
-  end_date: string
-  group_image_url?: string
+  groupName: string; // Matches CreateGroups.groupName
+  group_description: string;
+  totalSlot: number; // Matches CreateGroups.totalSlot
+  slotPrice: number; // Matches CreateGroups.slotPrice
+  livestock_id: string; // Matches CreateGroups.livestock_id
+  start_date: string;
+  end_date: string;
+  group_image_url?: string;
 }
 
+export interface StartCreateGroupPayload {
+  livestock_id: string;
+  groupName: string;
+  description: string;
+  totalSlot: number;
+  slotPrice: number;
+  creatorInitialSlots: number;
+}
+
+export interface CompleteCreateGroupPayload {
+  groupId: string
+  paymentMethod: "wallet" | "others"
+  paymentReference?: string
+}
+
+export interface CreateGroupResponse{
+  group_id : string
+}
+
+export interface CompleteCreateGroupResponse {
+  group_id: string
+  paymentLink?: string
+  paymentReference?: string
+}
+
+
 export interface JoinGroupPayload {
-  group_id: number
-  user_id: number
-  slots_taken: number
-  payment_method: string
-  amount_paid: number
-  transaction_id?: string
-  payment_status?: string
+  group_id: string;
+  user_id: string;
+  slots: number;
+  payment_method?: string; // Optional based on joinGroups
+  amount_paid?: number;    // From pendingPaymentModel if included
+  payment_status?: string; // From pendingPaymentModel if included
+  transaction_id?: string;
+  joined_at?: string;
 }
 
 export interface WalletFundingPayload {
   amount: number
   payment_method: string
   transaction_id?: string
+  data: {
+			payment_url: string
+		}
 }
 
 export interface UpdateUserPayload {
@@ -81,48 +111,104 @@ export interface UpdateUserPayload {
   address?: string
 }
 
-export interface ChangePasswordPayload {
-  oldPassword: string
-  newPassword: string
-}
 
 export interface Livestock {
-  id: number
-  name: string
-  description: string
-  image_url: string
-  min_amount: number
-  max_amount: number
-  current_price: number
-  status: string
-  createdAt: string
-  updatedAt: string
+  id: number;
+  livestock_id: string;
+  name: string;
+  breed?: string;
+  weight?: number;
+  price: number;
+  imageUrl?: string;
+  description?: string;
+  available: boolean;
+  minimum_amount: number; // Updated to match model
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface Transaction {
-  id: number
-  user_id: number
-  amount: number
-  type: "credit" | "debit"
-  status: "pending" | "completed" | "failed"
-  description: string
-  createdAt: string
-  updatedAt: string
+  id: number; // Maps to sn
+  transaction_id: string;
+  wallet_id?: string;
+  email: string;
+  user_id: string;
+  amount: number;
+  type: "credit" | "debit"; // Matches transaction_type
+  payment_means?: "wallet" | "others"; // Matches Transactions.payment_means
+  status: "pending" | "success" | "failed"; // Matches Transactions.status
+  description?: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface Group {
-  id: number
-  group_name: string
-  group_description: string
-  total_slots: number
-  slots_taken: number
-  price_per_slot: number
-  livestock_id: number
-  start_date: string
-  end_date: string
-  group_image_url?: string
-  status: string
-  createdAt: string
-  updatedAt: string
-  Livestock: Livestock
+  id: number; // Maps to sn
+  group_id: string; // Matches CreateGroups.group_id
+  group_name: string; // Matches CreateGroups.groupName
+  group_description: string; // Matches CreateGroups.description
+  totalSlot: number; // Matches CreateGroups.totalSlot
+  totalSlotLeft: number
+  slotTaken: number; // Matches CreateGroups.slotTaken
+  slotPrice: number; // Matches CreateGroups.slotPrice
+  livestock_id: string; // Matches CreateGroups.livestock_id
+  description: string
+  created_by: string; // Matches CreateGroups.created_by
+  start_date: string; // Matches CreateGroups.created_at
+  end_date: string; // Matches CreateGroups.updated_at
+  group_image_url?: string;
+  status: "pending" | "active" | "completed" | "cancelled"; // Matches CreateGroups.status
+  createdAt: string;
+  updatedAt: string;
+  progress?: number // Calculated field
+  userSlots?: number // For joined groups
+  joinedAt?: string // For joined groups
+  creatorInitialSlots?: number
+  // Nested livestock data when included
+  livestock?: {
+    livestock_id: string
+    name: string
+    price: number
+    minimum_amount: number
+    imageUrl: string
+  }
+  // Nested creator data when included
+  creator?: {
+    user_id: string
+    surname: string
+    othernames: string
+    email: string
+    initialSlots?: number;
+  }
+}
+  // Remove livestock and livestock_price; use livestock_id instead, or add nesting if API joins with Livestocks
+
+
+export interface InitializePaymentPayload {
+  group_id: string
+  slots: number
+  amount: number
+  paymentMethod: string
+}
+
+export interface InitializePaymentResponse {
+  status: "success" | "error"
+  message?: string
+  paymentUrl?: string
+  reference?: string
+  data?: any
+}
+
+export interface PaymentVerificationPayload {
+  reference: string
+  groupId: string
+  slots: number
+  amount: number
+}
+
+export interface PaymentVerificationResponse {
+  status: "success" | "error"
+  message?: string
+  payment?: any
+  group?: any
 }

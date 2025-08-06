@@ -11,11 +11,12 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
 import { api } from "@/lib/api"
 import { DollarSign, Loader2 } from "lucide-react"
 import { useRouter } from "next/navigation"
-import type { StartWalletFundingResponse } from "@/lib/types" // Import the new type
+import type { WalletFundingPayload, ApiResponse, Transaction } from "@/lib/types" // Import the new type
 import { useToast } from "@/components/ui/use-toast"
 import { z } from "zod"
-import type { Transaction } from "@/lib/types"
 import { formatCurrency } from "@/lib/utils"
+import { useAuth } from "@/lib/auth-context"
+
 
 export default function WalletPage() {
   const [amount, setAmount] = useState<number | string>("")
@@ -23,58 +24,85 @@ export default function WalletPage() {
   const router = useRouter()
   const queryClient = useQueryClient()
   const [isFundDialogOpen, setIsFundDialogOpen] = useState(false)
+  
+  const { token, user, isLoading: isAuthLoading } = useAuth();
 
   // Fetch wallet balance using useQuery
-  const { data: walletBalanceData = { data: { balance: 0 } }, isLoading: isLoadingBalance } = useQuery({
-    queryKey: ["walletBalance"],
-    queryFn: () => api.getWalletBalance(),
+   const { 
+    data: walletBalanceResponse, 
+    isLoading: isLoadingBalance,
+    error: walletBalanceError 
+  } = useQuery<ApiResponse<{ balance: number }>>({
+    queryKey: ["walletBalance", token],
+    queryFn: () => api.getWalletBalance(token as string),
+    enabled: !!token && !isAuthLoading,
   })
 
-  const walletBalance = walletBalanceData?.data?.balance || 0
+   const walletBalance = walletBalanceResponse?.data?.balance || 0
 
   // Fetch wallet transactions using useQuery
-  const { data: transactionsData = { data: [] }, isLoading: isLoadingTransactions } = useQuery({
-    queryKey: ["walletTransactions"],
-    queryFn: () => api.getWalletTransactions(),
+  const { 
+    data: transactionsResponse, 
+    isLoading: isLoadingTransactions,
+    error: transactionsError 
+  } = useQuery<ApiResponse<Transaction[]>>({
+    queryKey: ["walletTransactions", token],
+    queryFn: () => api.getWalletTransactions(token as string),
+    enabled: !!token && !isAuthLoading,
   })
-
-  const transactions: Transaction[] = transactionsData?.data || []
+ const transactions: Transaction[] = transactionsResponse?.data || []
 
   // Mutation for starting wallet funding
-  const startFundingMutation = useMutation({
-    mutationFn: async (fundAmount: number) => {
-      // Cast the return type to ensure TypeScript knows the structure
-      return api.startWalletFunding({ amount: fundAmount }) as Promise<StartWalletFundingResponse>
+  const startFundingMutation = useMutation<
+    ApiResponse<WalletFundingPayload>, 
+    Error, 
+    { fundAmount: number; paymentMethod: string }
+  >({
+    mutationFn: async (variables: { fundAmount: number; paymentMethod: string }) => {
+      return api.startWalletFunding(
+        { 
+          data: { 
+            amount: variables.fundAmount, 
+            payment_method: variables.paymentMethod 
+          } 
+        }, 
+        token as string
+      )
     },
-    onSuccess: (data: StartWalletFundingResponse) => {
-      console.log("Frontend: startFundingMutation onSuccess data:", data)
-      // Add explicit checks for data and data.data
-      if (data && data.data && data.data.payment_url) {
-        // Redirect to external payment gateway
+    onSuccess: (response: ApiResponse<WalletFundingPayload>) => {
+      console.log("Frontend: startFundingMutation onSuccess response:", response)
+      
+      // Check if response is successful and has payment_url
+      if (response.status === "success" && response.data?.data?.payment_url) {
         toast({
           title: "Payment Initiated",
           description: "Redirecting to payment gateway...",
         })
-        window.location.href = data.data.payment_url
-      } else {
-        // This block will be hit if data or data.data are missing,
-        // or if payment_url is not present within data.data
-        console.warn("Frontend: No payment_url found in response data. Full response:", data)
+        // Redirect to external payment gateway
+        window.location.href = response.data.data.payment_url
+      } else if (response.status === "success") {
+        // Success but no payment URL (maybe for wallet funding)
         toast({
           title: "Funding Initiated",
-          description:
-            "Wallet funding initiated, but no redirect URL was provided. Please check your wallet balance or try again.",
+          description: response.message || "Wallet funding initiated successfully.",
           variant: "default",
         })
         setAmount("")
-        queryClient.invalidateQueries({ queryKey: ["walletBalance"] }) // Invalidate to refetch balance
+        queryClient.invalidateQueries({ queryKey: ["walletBalance"] })
+      } else {
+        // Response indicates error
+        toast({
+          title: "Error",
+          description: response.message || response.error || "Failed to initiate funding.",
+          variant: "destructive",
+        })
       }
     },
-    onError: (err: any) => {
-      console.error("Frontend: startFundingMutation onError:", err) // Log the full error
+    onError: (error: Error) => {
+      console.error("Frontend: startFundingMutation onError:", error)
       toast({
         title: "Error",
-        description: err.message || "Failed to initiate funding.",
+        description: error.message || "Failed to initiate funding.",
         variant: "destructive",
       })
     },
@@ -91,7 +119,7 @@ export default function WalletPage() {
     if (!validation.success) {
       toast({
         title: "Validation Error",
-        description: validation.error.errors[0].message,
+        description: validation.error.issues[0].message,
         variant: "destructive",
       })
       return
@@ -106,9 +134,10 @@ export default function WalletPage() {
       return
     }
     try {
-      await startFundingMutation.mutateAsync(fundAmount)
+      await startFundingMutation.mutateAsync({fundAmount, paymentMethod: "wallet"})
     } catch (err) {
       // Error handled by mutation's onError
+      console.error("Error in handleSubmit:", err)
     }
   }
 

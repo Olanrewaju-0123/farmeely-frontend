@@ -4,15 +4,15 @@ import type React from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { DollarSign, Users, PiggyBank } from "lucide-react"
-import type { InvestmentGroup } from "@/lib/types"
+import type { Group } from "@/lib/types"
 import { formatCurrency } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 
 interface GroupCardProps {
-  group: InvestmentGroup
-  onJoinClick: (group: InvestmentGroup) => void
+  group: Group
+  onJoinClick: (group: Group) => void
   showJoinButton?: boolean
   children?: React.ReactNode // For share button or other actions
 }
@@ -24,7 +24,7 @@ export function GroupCard({ group, onJoinClick, showJoinButton = true, children 
     <Card className="flex flex-col">
       <CardHeader>
         <div className="flex items-center justify-between">
-          <CardTitle className="text-lg">{group.groupName}</CardTitle>
+          <CardTitle className="text-lg">{group.group_name}</CardTitle>
           <span
             className={`rounded-full px-3 py-1 text-xs font-medium ${
               group.status === "active"

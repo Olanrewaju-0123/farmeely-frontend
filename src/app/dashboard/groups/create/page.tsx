@@ -13,8 +13,9 @@ import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Separator } from "@/components/ui/separator"
 import { Loader2, XCircle } from "lucide-react"
 import { api } from "@/lib/api"
-import type { Livestock, StartCreateGroupPayload } from "@/lib/types"
+import type { Livestock, CreateGroupPayload, StartCreateGroupPayload, CreateGroupResponse, ApiResponse, } from "@/lib/types"
 import { useToast } from "@/components/ui/use-toast"
+import { useAuth } from "@/lib/auth-context"
 
 export default function CreateGroupPage() {
   const router = useRouter()
@@ -31,6 +32,7 @@ export default function CreateGroupPage() {
   const [selectedLivestock, setSelectedLivestock] = useState<Livestock | null>(null)
   const [error, setError] = useState<string | null>(null)
 
+  const { token, user, isLoading: isAuthLoading } = useAuth();
   // Fetch available livestock for the dropdown
   const {
     data: livestocks,
@@ -39,36 +41,46 @@ export default function CreateGroupPage() {
     error: livestocksError,
   } = useQuery<Livestock[]>({
     queryKey: ["availableLivestocks"],
-    queryFn: () => api.getLivestocks().then((res) => res.data || []),
+    queryFn: () => api.getLivestocks(token as string).then((res) => res.data || []),
+    enabled: !!token && !isAuthLoading,
   })
 
   // Mutation for starting group creation (creating the draft)
-  const createGroupDraftMutation = useMutation({
+  const createGroupDraftMutation = useMutation<
+    ApiResponse<CreateGroupResponse>,
+    Error,
+    StartCreateGroupPayload
+  >({
     mutationFn: async (data: StartCreateGroupPayload) => {
-      return api.startCreateGroup(data)
+      console.log("Sending group creation data:", data)
+      return api.startCreateGroup(data, token as string)
     },
-    onSuccess: (data) => {
-      if (data.status === "success" && data.data?.group_id) {
+    onSuccess: (response) => {
+      console.log("Group creation response:", response)
+      const groupId = response?.data?.group_id || response?.group_id || response?.data?.id
+      if (response.status === "success" && response.data?.group_id && groupId) {
         toast({
           title: "Group Draft Created!",
           description: "Proceeding to finalize payment for your initial contribution.",
         })
-        router.push(`/dashboard/groups/create/finalize/${data.data.group_id}`)
+        router.push(`/dashboard/groups/create/finalize/${response.data.group_id}`)
       } else {
-        setError(data.message || "Failed to create group draft.")
+        const errorMessage = response.message || response.error || "Failed to create group draft."
+        setError(errorMessage)
         toast({
           title: "Error",
-          description: data.message || "Failed to create group draft.",
+          description: errorMessage,
           variant: "destructive",
         })
       }
     },
-    onError: (err: any) => {
-      console.error("Failed to create group draft:", err)
-      setError(err.message || "Failed to create investment group draft.")
+     onError: (error: Error) => {
+      console.error("Failed to create group draft:", error)
+      const errorMessage = error.message || "Failed to create group draft."
+      setError(errorMessage)
       toast({
         title: "Error",
-        description: err.message || "An unexpected error occurred.",
+        description: errorMessage,
         variant: "destructive",
       })
     },
@@ -81,7 +93,8 @@ export default function CreateGroupPage() {
       setSelectedLivestock(foundLivestock)
       // Initialize slotPrice to minimum_amount and calculate totalSlot
       const initialSlotPrice = foundLivestock.minimum_amount
-      const calculatedTotalSlots = foundLivestock.price / initialSlotPrice
+      const calculatedTotalSlots = foundLivestock.price / foundLivestock.minimum_amount
+      // const calculatedTotalSlots = foundLivestock.price / initialSlotPrice
       setFormData((prev) => ({
         ...prev,
         livestock_id: livestockId,
@@ -126,8 +139,8 @@ export default function CreateGroupPage() {
     setError(null)
 
     if (
-      !formData.groupName ||
-      !formData.description ||
+      !formData.groupName.trim() ||
+      !formData.description.trim() ||
       !formData.livestock_id ||
       formData.slotPrice <= 0 ||
       formData.totalSlot <= 0 ||
@@ -142,16 +155,30 @@ export default function CreateGroupPage() {
       return
     }
 
+    if (formData.creatorInitialSlots > formData.totalSlot) {
+      const errorMessage = "Initial slots cannot exceed total slots"
+      setError(errorMessage)
+      toast({
+        title: "Error",
+        description: errorMessage,
+        variant: "destructive",
+      })
+      return
+    }
+
     try {
-      await createGroupDraftMutation.mutateAsync({
+      const payload: StartCreateGroupPayload = {
         livestock_id: formData.livestock_id,
         groupName: formData.groupName,
         description: formData.description,
         totalSlot: formData.totalSlot,
         slotPrice: formData.slotPrice,
         creatorInitialSlots: formData.creatorInitialSlots,
-      })
+      }
+      console.log("Submitting payload:", payload)
+      await createGroupDraftMutation.mutateAsync(payload)
     } catch (err) {
+      console.error("Error in handleSubmit:", err)
       // Error handled by mutation's onError
     }
   }
@@ -194,13 +221,13 @@ export default function CreateGroupPage() {
   return (
     <div className="px-4 py-6 sm:px-0">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">Create New Investment Group</h1>
-        <p className="text-gray-600 mt-2">Define your group details and start attracting investors.</p>
+        <h1 className="text-3xl font-bold text-gray-900">Create New Livestock Group</h1>
+        <p className="text-gray-600 mt-2">Define your group details and start attracting members.</p>
       </div>
       <Card className="w-full max-w-2xl mx-auto">
         <CardHeader>
           <CardTitle>Group Details</CardTitle>
-          <CardDescription>Fill in the information for your new livestock investment group.</CardDescription>
+          <CardDescription>Fill in the information for your new livestock group.</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -236,7 +263,7 @@ export default function CreateGroupPage() {
 
             {/* Investment Details Section */}
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold">Investment Details</h3>
+              <h3 className="text-lg font-semibold">Group Details</h3>
               <Separator />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
@@ -278,7 +305,7 @@ export default function CreateGroupPage() {
                     </SelectContent>
                   </Select>
                   <p className="text-sm text-muted-foreground mt-1">
-                    Total investment units for this group: {formData.totalSlot}
+                    Total units for this group: {formData.totalSlot}
                   </p>
                 </div>
               </div>
@@ -289,7 +316,7 @@ export default function CreateGroupPage() {
               <h3 className="text-lg font-semibold">Your Contribution</h3>
               <Separator />
               <div className="space-y-2">
-                <Label htmlFor="creatorInitialSlots">Number of Slots You'll Take (Initial Contribution)</Label>
+                <Label htmlFor="creatorInitialSlots">Number of Slots You'd like to Take (Initial Contribution)</Label>
                 <Input
                   id="creatorInitialSlots"
                   name="creatorInitialSlots"
@@ -301,7 +328,7 @@ export default function CreateGroupPage() {
                   required
                   disabled={!selectedLivestock || formData.totalSlot === 0}
                 />
-                <p className="text-sm text-muted-foreground mt-1">This is your initial investment in the group.</p>
+                <p className="text-sm text-muted-foreground mt-1">This is your initial Slot(s) in the group.</p>
               </div>
               <div className="bg-gray-50 p-4 rounded-lg space-y-2">
                 <div className="flex justify-between">

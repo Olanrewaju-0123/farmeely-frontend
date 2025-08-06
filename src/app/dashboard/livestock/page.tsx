@@ -1,66 +1,73 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useCallback } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Search, Plus } from "lucide-react"
-import Link from "next/link"
-import { Skeleton } from "@/components/ui/skeleton"
-import { useAuth } from "@/lib/auth-context"
-import { api } from "@/lib/api"
-import { useToast } from "@/components/ui/use-toast"
-import type { Livestock } from "@/lib/types"
-import { formatCurrency } from "@/lib/utils" // Declare the formatCurrency variable
+import { useState, useEffect, useCallback } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Search, Plus } from "lucide-react";
+import Link from "next/link";
+import { Skeleton } from "@/components/ui/skeleton";
+import { useAuth } from "@/lib/auth-context";
+import { api } from "@/lib/api";
+import { useToast } from "@/components/ui/use-toast";
+import type { Livestock } from "@/lib/types";
+import { formatCurrency } from "@/lib/utils"; // Declare the formatCurrency variable
 
 export default function LivestockPage() {
-  const { token, isLoading: isAuthLoading } = useAuth()
-  const { toast } = useToast()
-  const [livestock, setLivestock] = useState<Livestock[]>([])
-  const [isLoadingLivestock, setIsLoadingLivestock] = useState(true)
-  const [searchQuery, setSearchQuery] = useState("")
+  const { token, isLoading: isAuthLoading } = useAuth();
+  const { toast } = useToast();
+  const [livestock, setLivestock] = useState<Livestock[]>([]);
+  const [isLoadingLivestock, setIsLoadingLivestock] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const fetchLivestock = useCallback(async () => {
     if (!token) {
-      setIsLoadingLivestock(false)
-      return
+      setIsLoadingLivestock(false);
+      return;
     }
 
-    setIsLoadingLivestock(true)
+    setIsLoadingLivestock(true);
     try {
-      const response = await api.getLivestock(token)
+      const response = await api.getLivestocks(token);
       if (response.status === "success" && response.data) {
-        setLivestock(response.data)
+        setLivestock(response.data);
       } else {
         toast({
           title: "Error",
           description: response.message || "Failed to fetch livestock.",
           variant: "destructive",
-        })
+        });
       }
     } catch (error: any) {
       toast({
         title: "Error",
         description: error.message || "Network error fetching livestock.",
         variant: "destructive",
-      })
+      });
     } finally {
-      setIsLoadingLivestock(false)
+      setIsLoadingLivestock(false);
     }
-  }, [token, toast])
+  }, [token, toast]);
 
   useEffect(() => {
     if (!isAuthLoading) {
-      fetchLivestock()
+      fetchLivestock();
     }
-  }, [isAuthLoading, fetchLivestock])
+  }, [isAuthLoading, fetchLivestock]);
 
   const filteredLivestock = livestock.filter(
-    (item) =>
-      item.type.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.breed.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.location.toLowerCase().includes(searchQuery.toLowerCase()),
-  )
+    (item) => {
+      if (!searchQuery) return true;
+      const query = searchQuery.toLowerCase();
+      const name = item.name?.toLowerCase() || "";
+      const description = item.description?.toLowerCase() || "";
+
+      return name.includes(query) || description.includes(query);
+    }
+    // item.type.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    // item.breed.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    // item.location.toLowerCase().includes(searchQuery.toLowerCase()),
+  );
 
   if (isAuthLoading || isLoadingLivestock) {
     return (
@@ -88,15 +95,19 @@ export default function LivestockPage() {
           ))}
         </div>
       </div>
-    )
+    );
   }
 
   return (
     <div className="flex flex-col gap-6 p-4 md:p-6">
       <div className="flex items-center justify-between">
         <div className="space-y-1">
-          <h1 className="text-2xl font-bold tracking-tight">Livestock</h1>
-          <p className="text-gray-500 dark:text-gray-400">Manage your livestock inventory.</p>
+          <h1 className="text-2xl font-bold tracking-tight">
+            Livestock Available
+          </h1>
+          <p className="text-gray-500 dark:text-gray-400">
+            Browse available livestock.
+          </p>
         </div>
         <Link href="/dashboard/livestock/create">
           <Button>
@@ -119,20 +130,43 @@ export default function LivestockPage() {
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {filteredLivestock.length === 0 ? (
-          <p className="col-span-full text-center text-gray-500">No livestock found.</p>
+          <p className="col-span-full text-center text-gray-500">
+            {searchQuery
+              ? "No livestock found matching your search."
+              : "No livestock available at the moment."}
+            .
+          </p>
         ) : (
           filteredLivestock.map((item) => (
             <Card key={item.id}>
               <CardHeader>
                 <CardTitle>
-                  {item.type} - {item.breed}
+                  {item.name} - {item.breed}
                 </CardTitle>
                 <CardContent className="p-0 pt-4">
+                  item.image_url && (
+                    <img
+                      src={item.image_url || "/placeholder.svg"}
+                      alt={item.name}
+                      className="mb-4 h-40 w-full rounded-md object-cover"
+                      onError={(e) => {
+                        e.currentTarget.src = "/placeholder.svg?height=160&width=300&text=No+Image"
+                      }}
+                    />
+                  )}
                   <p className="text-sm text-gray-500">Age: {item.age} years</p>
-                  <p className="text-sm text-gray-500">Weight: {item.weight} kg</p>
-                  <p className="text-sm text-gray-500">Health: {item.health_status}</p>
-                  <p className="text-sm text-gray-500">Location: {item.location}</p>
-                  <p className="text-lg font-bold mt-2">Price: {formatCurrency(item.price)}</p>
+                  <p className="text-sm text-gray-500">
+                    Weight: {item.weight} kg
+                  </p>
+                  <p className="text-sm text-gray-500">
+                    Health: {item.health_status}
+                  </p>
+                  <p className="text-sm text-gray-500">
+                    Location: {item.location}
+                  </p>
+                  <p className="text-lg font-bold mt-2">
+                    Price: {formatCurrency(item.price)}
+                  </p>
                 </CardContent>
               </CardHeader>
             </Card>
@@ -140,5 +174,5 @@ export default function LivestockPage() {
         )}
       </div>
     </div>
-  )
+  );
 }

@@ -9,12 +9,14 @@ import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Loader2, CheckCircle, XCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useToast } from "@/components/ui/use-toast"
+import { useAuth } from "@/lib/auth-context"
 
 export default function CompleteGroupCreationPage() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const queryClient = useQueryClient()
   const { toast } = useToast()
+  const {token} = useAuth()
 
   const [statusMessage, setStatusMessage] = useState("Processing your group creation payment...")
   const [isErrorState, setIsErrorState] = useState(false) // Use a distinct state for local errors
@@ -23,12 +25,12 @@ export default function CompleteGroupCreationPage() {
   const groupId = searchParams.get("group_id") // Assuming you pass group_id back from Paystack callback
 
   const completeCreationMutation = useMutation({
-    mutationFn: async (payload: { group_id: string; paymentReference: string }) => {
-      return api.completeCreateGroup({
-        group_id: payload.group_id,
-        paymentMethod: "others", // Assuming this page is only for 'others' payment method callbacks
-        paymentReference: payload.paymentReference,
-      })
+    mutationFn: async (payload: { group_Id: string; paymentReference: string }) => {
+      return api.completeCreateGroup( payload, token as string
+        // group_id: payload.group_id,
+        // paymentMethod: "others", // Assuming this page is only for 'others' payment method callbacks
+        // paymentReference: payload.paymentReference,
+      )
     },
     onSuccess: (data) => {
       if (data.status === "success") {
@@ -36,7 +38,7 @@ export default function CompleteGroupCreationPage() {
         setIsErrorState(false)
         toast({
           title: "Group Created!",
-          description: data.message || "Your investment group has been successfully created.",
+          description: data.message || "Your group has been successfully created.",
           variant: "success",
         })
         queryClient.invalidateQueries({ queryKey: ["activeGroups"] }) // Invalidate to refetch updated groups
@@ -67,8 +69,8 @@ export default function CompleteGroupCreationPage() {
   })
 
   useEffect(() => {
-    if (reference && groupId) {
-      completeCreationMutation.mutate({ group_id: groupId, paymentReference: reference })
+    if (reference && groupId && token) {
+      completeCreationMutation.mutate({ groupId: groupId, paymentMethod: "others", paymentReference: reference })
     } else {
       setStatusMessage("Missing payment reference or group ID. Please try creating your group again.")
       setIsErrorState(true)
@@ -78,7 +80,7 @@ export default function CompleteGroupCreationPage() {
         variant: "destructive",
       })
     }
-  }, [reference, groupId, completeCreationMutation, toast]) // Depend on reference and groupId to trigger mutation
+  }, [reference, groupId, completeCreationMutation, toast, token]) // Depend on reference and groupId to trigger mutation
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -99,7 +101,7 @@ export default function CompleteGroupCreationPage() {
               <AlertDescription className="text-lg font-medium">{statusMessage}</AlertDescription>
             </Alert>
           )}
-          {completeCreationMutation.isError && (
+          {(completeCreationMutation.isError ||  isErrorState) && (
             <Alert variant="destructive">
               <XCircle className="h-5 w-5" />
               <AlertDescription className="text-lg font-medium">{statusMessage}</AlertDescription>
