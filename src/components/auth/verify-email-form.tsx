@@ -9,6 +9,7 @@ import { z } from "zod"
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { useState } from "react"
 
 const formSchema = z.object({
   otp: z.string().length(6, "OTP must be 6 digits."),
@@ -19,7 +20,8 @@ interface VerifyEmailFormProps {
 }
 
 export function VerifyEmailForm({ email }: VerifyEmailFormProps) {
-  const { verifyEmail, resendOtp } = useAuth()
+  const { verifyEmail, resendOtp, isLoading } = useAuth()
+  const [isResending, setIsResending] = useState(false)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -32,8 +34,20 @@ export function VerifyEmailForm({ email }: VerifyEmailFormProps) {
     verifyEmail({ email, otp: values.otp })
   }
 
-  const handleResendOtp = () => {
-    resendOtp(email)
+  const handleResendOtp = async () => {
+    if (!email) {
+      console.error("Email is required to resend OTP")
+      return
+    }
+    
+    setIsResending(true)
+    try {
+      await resendOtp(email)
+    } catch (error) {
+      console.error("Error resending OTP:", error)
+    } finally {
+      setIsResending(false)
+    }
   }
 
   return (
@@ -53,7 +67,7 @@ export function VerifyEmailForm({ email }: VerifyEmailFormProps) {
           )}
         />
         <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
-          {form.formState.isSubmitting ? (
+          {form.formState.isSubmitting || isLoading ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               Verifying...
@@ -62,8 +76,15 @@ export function VerifyEmailForm({ email }: VerifyEmailFormProps) {
             "Verify Email"
           )}
         </Button>
-        <Button type="button" variant="link" className="w-full" onClick={handleResendOtp}>
-          Resend OTP
+        <Button type="button" variant="link" className="w-full" onClick={handleResendOtp} disabled={isResending || isLoading || !email}>
+          {isResending ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Resending...
+            </>
+          ) : (
+            "Resend OTP"
+          )}
         </Button>
       </form>
     </Form>

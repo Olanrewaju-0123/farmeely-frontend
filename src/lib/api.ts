@@ -150,8 +150,12 @@ class ApiClient {
 }
 
   // Complete group creation
-  completeCreateGroup(paymentReference: any, authToken: string): Promise<ApiResponse<Group>> {
-    return this.request(`/groups/create/complete/${paymentReference}`, "POST", undefined, undefined, authToken)
+  // completeCreateGroup(paymentReference: any, authToken: string): Promise<ApiResponse<Group>> {
+  //   return this.request(`/groups/create/complete/${paymentReference}`, "POST", undefined, undefined, authToken)
+  // }
+
+completeCreateGroup(payload: { groupId: string; paymentMethod: string; paymentReference?: string }, authToken: string): Promise<ApiResponse<Group>> {
+    return this.request("/groups/create/complete", "POST", payload, undefined, authToken);
   }
 
   // Updated: Get active groups

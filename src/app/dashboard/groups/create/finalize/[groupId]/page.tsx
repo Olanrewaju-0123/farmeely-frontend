@@ -44,7 +44,7 @@ export default function FinalizeGroupCreationPage({ params }: FinalizeGroupCreat
     queryFn: () => api.getGroupDetails(groupId, token as string).then((res) => res.data),
     enabled: !!groupId, 
   })
-  console.log("data:", groupDetails.slotTaken)
+  // console.log("data:", groupDetails.slotTaken)
 
   // Fetch wallet balance
   const { data: walletBalance = 0, isLoading: isLoadingWalletBalance } = useQuery<number>({

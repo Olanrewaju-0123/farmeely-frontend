@@ -5,8 +5,9 @@ import { useRouter } from "next/navigation"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Clock, ArrowRight, Trash2 } from "lucide-react"
+import { Clock, ArrowRight, Trash2, AlertCircle } from 'lucide-react'
 import type { Group } from "@/lib/types"
+import { formatCurrency } from "@/lib/utils"
 
 interface DraftGroupsSectionProps {
   groups: Group[]
@@ -32,7 +33,7 @@ export default function DraftGroupsSection({ groups, onDeleteDraft, isLoading }:
 
   if (isLoading) {
     return (
-      <Card className="mb-6">
+      <Card className="mb-6 border-orange-200">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Clock className="h-5 w-5 text-orange-500" />
@@ -54,14 +55,15 @@ export default function DraftGroupsSection({ groups, onDeleteDraft, isLoading }:
   }
 
   return (
-    <Card className="mb-6">
+    <Card className="mb-6 border-orange-200 bg-orange-50/50">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Clock className="h-5 w-5 text-orange-500" />
           Draft Groups ({draftGroups.length})
         </CardTitle>
-        <CardDescription>
-          Complete payment for these groups to activate them
+        <CardDescription className="flex items-center gap-2">
+          <AlertCircle className="h-4 w-4 text-orange-500" />
+          Complete payment for these groups to activate them and make them visible to other users
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -72,29 +74,40 @@ export default function DraftGroupsSection({ groups, onDeleteDraft, isLoading }:
             return (
               <div
                 key={group.group_id}
-                className="flex items-center justify-between p-4 border rounded-lg bg-orange-50 border-orange-200"
+                className="flex items-center justify-between p-4 border rounded-lg bg-white border-orange-200 shadow-sm"
               >
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <h3 className="font-semibold">{group.group_name}</h3>
-                    <Badge variant="outline" className="text-orange-600 border-orange-300">
+                    <h3 className="font-semibold text-gray-900">
+                      {group.groupName || group.group_name}
+                    </h3>
+                    <Badge variant="outline" className="text-orange-600 border-orange-300 bg-orange-50">
                       Payment Pending
                     </Badge>
                   </div>
                   <p className="text-sm text-muted-foreground mb-2">
-                    {group.group_description}
+                    {group.description || group.group_description}
                   </p>
                   <div className="flex items-center gap-4 text-sm">
-                    <span>
-                      Your Slots: <span className="font-medium">{group.creatorInitialSlots || 1}</span>
+                    <span className="flex items-center gap-1">
+                      <strong>Your Slots:</strong> 
+                      <span className="font-medium">{group.creatorInitialSlots || 1}</span>
                     </span>
-                    <span>
-                      Amount: <span className="font-medium">₦{initialContributionCost.toLocaleString()}</span>
+                    <span className="flex items-center gap-1">
+                      <strong>Amount Due:</strong> 
+                      <span className="font-medium text-orange-600">
+                        {formatCurrency(initialContributionCost)}
+                      </span>
                     </span>
                     <span className="text-muted-foreground">
-                      Created: {new Date(group.createdAt).toLocaleDateString()}
+                      Created: {new Date(group.createdAt || '').toLocaleDateString()}
                     </span>
                   </div>
+                  {group.livestock && (
+                    <div className="mt-2 text-sm text-muted-foreground">
+                      Livestock: {group.livestock.name} - {formatCurrency(group.livestock.price)}
+                    </div>
+                  )}
                 </div>
                 <div className="flex items-center gap-2">
                   {onDeleteDraft && (
@@ -102,14 +115,14 @@ export default function DraftGroupsSection({ groups, onDeleteDraft, isLoading }:
                       variant="outline"
                       size="sm"
                       onClick={() => handleDeleteDraft(group.group_id)}
-                      className="text-red-600 hover:text-red-700 hover:bg-red-50"
+                      className="text-red-600 hover:text-red-700 hover:bg-red-50 border-red-200"
                     >
                       <Trash2 className="h-4 w-4" />
                     </Button>
                   )}
                   <Button
                     onClick={() => handleContinuePayment(group.group_id)}
-                    className="bg-green-600 hover:bg-green-700"
+                    className="bg-orange-600 hover:bg-orange-700 text-white"
                     size="sm"
                   >
                     Complete Payment

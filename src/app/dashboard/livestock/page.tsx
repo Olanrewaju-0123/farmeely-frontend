@@ -146,23 +146,23 @@ export default function LivestockPage() {
                 <CardContent className="p-0 pt-4">
                   item.image_url && (
                     <img
-                      src={item.image_url || "/placeholder.svg"}
+                      src={item.imageUrl || "/placeholder.svg"}
                       alt={item.name}
                       className="mb-4 h-40 w-full rounded-md object-cover"
                       onError={(e) => {
                         e.currentTarget.src = "/placeholder.svg?height=160&width=300&text=No+Image"
                       }}
                     />
-                  )}
-                  <p className="text-sm text-gray-500">Age: {item.age} years</p>
+                  )
+                  <p className="text-sm text-gray-500">description: {item.description} years</p>
                   <p className="text-sm text-gray-500">
                     Weight: {item.weight} kg
                   </p>
                   <p className="text-sm text-gray-500">
-                    Health: {item.health_status}
+                    price: {item.price}
                   </p>
                   <p className="text-sm text-gray-500">
-                    Location: {item.location}
+                    available: {item.available}
                   </p>
                   <p className="text-lg font-bold mt-2">
                     Price: {formatCurrency(item.price)}

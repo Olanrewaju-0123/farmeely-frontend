@@ -31,7 +31,7 @@ import { useQuery } from "@tanstack/react-query";
 // }
 
 export default function DashboardPage() {
-  const { user, token } = useAuth() as { user: User | null; token: string | null };
+  const { user, token } = useAuth()
 
   // Fetch wallet balance
   const { data: walletBalance = 0, isLoading: isLoadingWalletBalance } =
@@ -52,26 +52,30 @@ export default function DashboardPage() {
       enabled: !!token,
     });
 
+    
+
   // Fetch user's groups
   const { data: myGroupsData = [], isLoading: isLoadingMyGroups } = useQuery<
-    JoinGroupPayload[]
+    Group[]
   >({
     queryKey: ["myGroups"],
     queryFn: () => api.getMyGroups(token ?? "").then((res) => res.data || []),
     enabled: !!token,
   });
+  console.log('myGroupsData:', myGroupsData);
+// console.log('Sample participation:', myGroupsData?.[0]);
   const isLoading =
     isLoadingWalletBalance || isLoadingActiveGroups || isLoadingMyGroups;
 
   // Calculate derived stats
   const totalGroup = Array.isArray(myGroupsData)
     ? myGroupsData.reduce(
-        (sum, participation) =>
-          sum + (participation.group?.slotPrice || 0) * participation.slots,
+        (sum, group) =>
+          sum + (group?.slotPrice || 0) * group.userSlots!,
         0
       )
     : 0;
-  const totalReturns = 0; // This would come from completed investments, keeping as 0 for now
+  const totalReturns = 0; // This would come from completed, keeping as 0 for now
 
   const recentGroups = Array.isArray(activeGroupsData)
     ? activeGroupsData.slice(0, 3)
@@ -293,23 +297,23 @@ export default function DashboardPage() {
                 {/* Added bg-white */}
                 <div className="flex justify-between items-start mb-2">
                   <h4 className="font-medium">
-                    {participation.group?.group_name}
+                    {participation.group_name}
                   </h4>
                   <span className="text-sm text-blue-600">
-                    {participation.slots} slots
+                    {participation.userSlots} slots
                   </span>
                 </div>
                 <div className="flex justify-between text-sm text-muted-foreground">
                   <span>
                     Investment: ₦
                     {(
-                      (participation.group?.slotPrice || 0) *
-                      participation.slots
+                      (participation.slotPrice || 0) *
+                      participation.userSlots!
                     ).toLocaleString()}
                   </span>
                   <span className="flex items-center">
                     <Clock className="w-3 h-3 mr-1" />
-                    {new Date(participation.joined_at).toLocaleDateString()}
+                    {new Date(participation.joinedAt!).toLocaleDateString()}
                   </span>
                 </div>
               </div>

@@ -17,6 +17,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert"
 import type { Group } from "@/lib/types";
 import { useAuth } from "@/lib/auth-context";
 import DraftGroupsSection from "@/components/groups/draft-groups-section"
+import { useToast } from "@/components/ui/use-toast";
 
 // import { unknown } from "zod"
 
@@ -30,6 +31,8 @@ export default function GroupsPage() {
 
   const { token, user, isLoading: isAuthLoading } = useAuth();
   const queryClient = useQueryClient();
+  const {toast} = useToast()
+  
 // Fetch active groups (only groups with status: "active")
   const {
     data: activeGroups,
@@ -100,10 +103,16 @@ export default function GroupsPage() {
     onSuccess: () => {
       // Refetch the created groups data
       queryClient.invalidateQueries({ queryKey: ["myCreatedGroups"] });
-      toast.success("Draft group deleted successfully");
+      toast({
+        title: "success",
+        description: "Draft group created successfully"
+      })
     },
     onError: (error: any) => {
-      toast.error(error.message || "Failed to delete draft group");
+      toast({
+        title: "Error",
+        description: "Failed to delete draft group"
+      })
     },
   });
 
@@ -521,7 +530,7 @@ export default function GroupsPage() {
 
       {selectedGroupToJoin && (
         <JoinGroupModal
-          groupId={selectedGroupToJoin?.id} // Changed from group_id to id, and ensured it's a number
+          groupId={selectedGroupToJoin?.id || 0} // Changed from group_id to id, and ensured it's a number
           isOpen={isJoinModalOpen}
           onClose={handleCloseJoinModal}
         />

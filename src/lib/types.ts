@@ -11,10 +11,11 @@ export interface User {
   email: string;
  othernames?: string; // Updated to match backend/auth-context
   surname?: string; // Updated to match backend/auth-context
-  phone?: string; // Maps to phoneNumber
+  phoneNumber?: string; // Maps to phoneNumber
   address?: string;
+  location?: string;
   role?: "user" | "admin";
-  isVerified?: boolean; // Maps to is_email_verified
+  is_email_verified?: boolean;  // Maps to is_email_verified
   createdAt?: string;
   updatedAt?: string;
 }
@@ -27,9 +28,11 @@ export interface LoginPayload {
 export interface SignupPayload {
   email: string
   password: string
-  firstName: string
-  lastName: string
-  phone: string
+  surname: string
+  othernames: string
+  phoneNumber: string
+  location: string
+  address: string
 }
 
 export interface ForgotPasswordPayload {
@@ -97,7 +100,7 @@ export interface JoinGroupPayload {
 
 export interface WalletFundingPayload {
   amount: number
-  payment_method: string
+  payment_method?: string
   transaction_id?: string
   data: {
 			payment_url: string
@@ -105,15 +108,16 @@ export interface WalletFundingPayload {
 }
 
 export interface UpdateUserPayload {
-  firstName?: string
-  lastName?: string
-  phone?: string
+  surname?: string
+  othernames?: string
+  phoneNumber?: string
   address?: string
+  location?: string
 }
 
 
 export interface Livestock {
-  id: number;
+  id?: number;
   livestock_id: string;
   name: string;
   breed?: string;
@@ -128,13 +132,13 @@ export interface Livestock {
 }
 
 export interface Transaction {
-  id: number; // Maps to sn
+  id?: number; // Maps to sn
   transaction_id: string;
   wallet_id?: string;
   email: string;
   user_id: string;
   amount: number;
-  type: "credit" | "debit"; // Matches transaction_type
+  transaction_type: "credit" | "debit"; 
   payment_means?: "wallet" | "others"; // Matches Transactions.payment_means
   status: "pending" | "success" | "failed"; // Matches Transactions.status
   description?: string;
@@ -143,34 +147,40 @@ export interface Transaction {
 }
 
 export interface Group {
-  id: number; // Maps to sn
+  id?: number; // Maps to sn
   group_id: string; // Matches CreateGroups.group_id
-  group_name: string; // Matches CreateGroups.groupName
-  group_description: string; // Matches CreateGroups.description
+  groupName: string;
+  group_name?: string; // Matches CreateGroups.groupName
+  group_description?: string; // Matches CreateGroups.description
+  description: string
   totalSlot: number; // Matches CreateGroups.totalSlot
   totalSlotLeft: number
   slotTaken: number; // Matches CreateGroups.slotTaken
   slotPrice: number; // Matches CreateGroups.slotPrice
   livestock_id: string; // Matches CreateGroups.livestock_id
-  description: string
   created_by: string; // Matches CreateGroups.created_by
-  start_date: string; // Matches CreateGroups.created_at
-  end_date: string; // Matches CreateGroups.updated_at
+  start_date?: string; // Matches CreateGroups.created_at
+  end_date?: string; // Matches CreateGroups.updated_at
   group_image_url?: string;
   status: "pending" | "active" | "completed" | "cancelled"; // Matches CreateGroups.status
-  createdAt: string;
-  updatedAt: string;
+  createdAt?: string;
+  updatedAt?: string;
   progress?: number // Calculated field
   userSlots?: number // For joined groups
   joinedAt?: string // For joined groups
   creatorInitialSlots?: number
+  finalSlotPriceTaken?: number;
+  totalSlotPriceLeft?: number;
+  paymentReference?: string;
+  paymentMethod?: string;
   // Nested livestock data when included
   livestock?: {
     livestock_id: string
     name: string
     price: number
     minimum_amount: number
-    imageUrl: string
+    imageUrl?: string
+    description?: string
   }
   // Nested creator data when included
   creator?: {

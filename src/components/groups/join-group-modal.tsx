@@ -90,7 +90,7 @@ export function JoinGroupModal({ groupId, isOpen, onClose }: JoinGroupModalProps
 
     setIsSubmitting(true)
     try {
-      const amount_paid = values.slots_taken * groupDetails.price_per_slot
+      const amount_paid = values.slots_taken * groupDetails.slotPrice
       const payload = {
         group_id: groupDetails.id,
         user_id: user.id,
@@ -99,7 +99,7 @@ export function JoinGroupModal({ groupId, isOpen, onClose }: JoinGroupModalProps
         amount_paid: amount_paid,
       }
 
-      const response = await api.joinGroup(payload, token)
+      const response = await api.joinGroup(groupId, payload, token)
 
       if (response.status === "success") {
         toast({
@@ -128,7 +128,7 @@ export function JoinGroupModal({ groupId, isOpen, onClose }: JoinGroupModalProps
     }
   }
 
-  const availableSlots = groupDetails ? groupDetails.total_slots - groupDetails.slots_taken : 0
+  const availableSlots = groupDetails ? groupDetails.totalSlot - groupDetails.slotTaken : 0
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -173,13 +173,13 @@ export function JoinGroupModal({ groupId, isOpen, onClose }: JoinGroupModalProps
               <div className="grid grid-cols-4 items-center gap-4">
                 <Label className="text-right">Price per slot</Label>
                 <span className="col-span-3 font-medium">
-                  {groupDetails.price_per_slot ? `$${groupDetails.price_per_slot.toFixed(2)}` : "N/A"}
+                  {groupDetails.slotPrice ? `$${groupDetails.slotPrice.toFixed(2)}` : "N/A"}
                 </span>
               </div>
               <div className="grid grid-cols-4 items-center gap-4">
                 <Label className="text-right">Total Amount</Label>
                 <span className="col-span-3 font-bold text-lg">
-                  ${(form.watch("slots_taken") * (groupDetails.price_per_slot || 0)).toFixed(2)}
+                  ${(form.watch("slots_taken") * (groupDetails.slotPrice || 0)).toFixed(2)}
                 </span>
               </div>
               <div className="grid grid-cols-4 items-center gap-4">

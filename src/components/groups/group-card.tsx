@@ -15,6 +15,8 @@ interface GroupCardProps {
   onJoinClick: (group: Group) => void
   showJoinButton?: boolean
   children?: React.ReactNode // For share button or other actions
+  isCreator?: boolean
+  isPending?: boolean
 }
 
 export function GroupCard({ group, onJoinClick, showJoinButton = true, children }: GroupCardProps) {

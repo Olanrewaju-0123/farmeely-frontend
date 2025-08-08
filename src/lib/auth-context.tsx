@@ -35,6 +35,7 @@ interface AuthContextType {
   verifyEmail: (
     payload: VerifyEmailPayload
   ) => Promise<ApiResponse<{ user: User; token: string }>>;
+  resendOtp: (email: string) => Promise<ApiResponse>;
   fetchUserProfile: (authToken: string) => Promise<ApiResponse<User>>;
 }
 
@@ -421,6 +422,42 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     [fetchUserProfile, router, toast]
   );
 
+  const resendOtp = useCallback(
+    async (email: string): Promise<ApiResponse> => {
+      setIsLoading(true);
+      try {
+        const response = await api.resendOtp(email);
+        if (response.status === "success") {
+          toast({
+            title: "OTP Resent",
+            description: response.message || "A new OTP has been sent to your email.",
+            variant: "default",
+          });
+        } else {
+          toast({
+            title: "Error",
+            description: response.message || "Failed to resend OTP.",
+            variant: "destructive",
+          });
+        }
+        return response;
+      } catch (error: any) {
+        toast({
+          title: "Error",
+          description: error.message || "Network error while resending OTP.",
+          variant: "destructive",
+        });
+        return {
+          status: "error",
+          message: error.message || "Network error while resending OTP.",
+        };
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [toast]
+  );
+
   const value = React.useMemo(
     () => ({
       user,
@@ -433,6 +470,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       resetPassword,
       verifyEmail,
       fetchUserProfile,
+      resendOtp,
     }),
     [
       user,
@@ -445,6 +483,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       resetPassword,
       verifyEmail,
       fetchUserProfile,
+      resendOtp
     ]
   );
 

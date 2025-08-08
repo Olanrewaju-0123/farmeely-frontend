@@ -22,9 +22,15 @@ export default function CompleteWalletFundingPage() {
   const reference = searchParams.get("reference") // Assuming payment gateway sends a 'reference' parameter
 
   const completeFundingMutation = useMutation({
-    mutationFn: async (ref: string) => {
-      return api.completeWalletFunding(ref)
-    },
+    mutationFn: async ({reference, token}: {reference: string, token:string}) => {
+      return await fetch('/api/complete-funding', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ reference, token })
+    }).then(res => res.json());
+  },
     onSuccess: (data) => {
       if (data.status === "success") {
         setStatusMessage("Wallet funded successfully! Redirecting...")
@@ -61,7 +67,7 @@ export default function CompleteWalletFundingPage() {
 
   useEffect(() => {
     if (reference) {
-      completeFundingMutation.mutate(reference)
+      completeFundingMutation.mutate({reference: reference, token:"" })
     } else {
       setStatusMessage("No payment reference found. Please try funding your wallet again.")
       setIsErrorState(true)

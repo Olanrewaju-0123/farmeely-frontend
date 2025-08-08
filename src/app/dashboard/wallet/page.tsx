@@ -58,17 +58,15 @@ export default function WalletPage() {
     Error, 
     { fundAmount: number; paymentMethod: string }
   >({
-    mutationFn: async (variables: { fundAmount: number; paymentMethod: string }) => {
-      return api.startWalletFunding(
-        { 
-          data: { 
-            amount: variables.fundAmount, 
-            payment_method: variables.paymentMethod 
-          } 
-        }, 
-        token as string
-      )
-    },
+    mutationFn: async (variables:{fundAmount: number; paymentMethod:string}) => {
+      // const token =  user?.token ||localStorage.getItem('authToken') || '';
+      
+     const payload= {
+      amount: variables.fundAmount,
+      payment_method: variables.paymentMethod
+     } 
+      return await api.startWalletFunding(payload, token);
+  },
     onSuccess: (response: ApiResponse<WalletFundingPayload>) => {
       console.log("Frontend: startFundingMutation onSuccess response:", response)
       
@@ -226,9 +224,9 @@ export default function WalletPage() {
                           </p>
                         </div>
                         <div
-                          className={`font-semibold ${transaction.type === "credit" ? "text-green-600" : "text-red-600"}`}
+                          className={`font-semibold ${transaction.transaction_type === "credit" ? "text-green-600" : "text-red-600"}`}
                         >
-                          {transaction.type === "credit" ? "+" : "-"}
+                          {transaction.transaction_type === "credit" ? "+" : "-"}
                           {formatCurrency(transaction.amount)}
                         </div>
                       </div>
