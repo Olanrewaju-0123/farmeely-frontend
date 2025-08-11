@@ -15,6 +15,7 @@ import { api } from "@/lib/api"
 import type { Group, CompleteCreateGroupPayload } from "@/lib/types"
 import { useToast } from "@/components/ui/use-toast"
 import { useAuth } from "@/lib/auth-context"
+import { formatCurrency } from "@/lib/utils"
 
 interface FinalizeGroupCreationPageProps {
   params: {
@@ -44,7 +45,15 @@ export default function FinalizeGroupCreationPage({ params }: FinalizeGroupCreat
     queryFn: () => api.getGroupDetails(groupId, token as string).then((res) => res.data),
     enabled: !!groupId, 
   })
-  // console.log("data:", groupDetails.slotTaken)
+  console.log("=== FINALIZE PAGE DEBUG ===")
+  console.log("Group Details Raw:", groupDetails)
+  console.log("Group ID:", groupId)
+  console.log("Slot Price:", groupDetails?.slotPrice)
+  console.log("Creator Initial Slots:", groupDetails?.creatorInitialSlots)
+  console.log("Total Slot:", groupDetails?.totalSlot)
+  console.log("Slot Taken:", groupDetails?.slotTaken)
+  console.log("Status:", groupDetails?.status)
+  console.log("===========================")
 
   // Fetch wallet balance
   const { data: walletBalance = 0, isLoading: isLoadingWalletBalance } = useQuery<number>({
@@ -70,10 +79,11 @@ export default function FinalizeGroupCreationPage({ params }: FinalizeGroupCreat
           router.push("/dashboard/groups")
         }, 2000)
       // } else if (data.status === "error" && data.data?.paymentLink) {
-      } else if (data.createDetails?.paymentLink) {
+      // } else if (data.createDetails?.paymentLink) {
         // This case should ideally not happen if backend correctly redirects for 'others'
         // but as a fallback, if a paymentLink is returned, redirect the user.
-        window.location.href = data.data?.paymentLink
+      } else if (data.createDetails?.paymentLink) {
+        window.location.href = data.createDetails?.paymentLink
       } else {
         setError(data.message || "Failed to finalize group creation.")
         toast({
@@ -85,7 +95,7 @@ export default function FinalizeGroupCreationPage({ params }: FinalizeGroupCreat
     },
     onError: (err: any) => {
       console.error("Failed to finalize group:", err)
-      setError(err.message || "Failed to finalize investment group.")
+      setError(err.message || "Failed to finalize Livestock group.")
       toast({
         title: "Error",
         description: err.message || "An unexpected error occurred.",
@@ -102,8 +112,22 @@ export default function FinalizeGroupCreationPage({ params }: FinalizeGroupCreat
       setError("Group details not loaded. Please try again.")
       return
     }
+    const slotPrice = Number(groupDetails.slotPrice) || 0
+       const creatorSlots = Number(groupDetails.creator.creatorInitialSlots) || 1
+    // const initialContributionCost = groupDetails.slotPrice * (groupDetails.creatorInitialSlots || 1)
+    const initialContributionCost = slotPrice * creatorSlots
 
-    const initialContributionCost = groupDetails.slotPrice * (groupDetails.creatorInitialSlots || 1)
+    console.log("=== PAYMENT CALCULATION DEBUG ===")
+    console.log("Slot Price (parsed):", slotPrice)
+    console.log("Creator Slots (parsed):", creatorSlots)
+    console.log("Initial Contribution Cost:", initialContributionCost)
+    console.log("Wallet Balance:", walletBalance)
+    console.log("================================")
+
+    if (initialContributionCost <= 0) {
+      setError("Invalid contribution amount. Please try again.")
+      return
+    }
 
     if (paymentMethod === "wallet" && walletBalance < initialContributionCost) {
       setError(
@@ -150,7 +174,9 @@ export default function FinalizeGroupCreationPage({ params }: FinalizeGroupCreat
     )
   }
 
-  const initialContributionCost = groupDetails.slotPrice * groupDetails.creatorInitialSlots
+  const slotPrice = Number(groupDetails.slotPrice) || 0
+  const creatorSlots = Number(groupDetails.creatorInitialSlots) || 1
+  const initialContributionCost = slotPrice * creatorSlots
   const canAffordWithWallet = walletBalance >= initialContributionCost
 
   return (
@@ -181,11 +207,16 @@ export default function FinalizeGroupCreationPage({ params }: FinalizeGroupCreat
               </div>
               <div className="flex justify-between">
                 <span>Your Initial Slots:</span>
-                <span className="font-semibold">{groupDetails.creatorInitialSlots}</span>
+                <span className="font-semibold">{creatorSlots}</span>
               </div>
+              <div className="flex justify-between">
+                <span>Price per Slot:</span>
+                <span className="font-semibold">{formatCurrency(slotPrice)}</span>
+              </div>
+              <Separator />
               <div className="flex justify-between items-center">
                 <span className="text-lg font-semibold">Total Amount Due:</span>
-                <span className="text-2xl font-bold text-green-600">₦{initialContributionCost.toLocaleString()}</span>
+                <span className="text-2xl font-bold text-green-600">{formatCurrency(initialContributionCost)}</span>
               </div>
             </div>
 
@@ -205,7 +236,7 @@ export default function FinalizeGroupCreationPage({ params }: FinalizeGroupCreat
                           canAffordWithWallet && initialContributionCost > 0 ? "text-green-600" : "text-red-600"
                         }
                       >
-                        ₦{walletBalance.toLocaleString()}
+                        {formatCurrency(walletBalance)}
                       </span>
                     </div>
                   </Label>
@@ -227,7 +258,11 @@ export default function FinalizeGroupCreationPage({ params }: FinalizeGroupCreat
             <Button
               type="submit"
               className="w-full bg-green-600 text-white hover:bg-green-700"
-              disabled={completeGroupMutation.isPending || (paymentMethod === "wallet" && !canAffordWithWallet)}
+              disabled={
+                completeGroupMutation.isPending ||
+                (paymentMethod === "wallet" && !canAffordWithWallet) ||
+                initialContributionCost <= 0
+              }
             >
               {completeGroupMutation.isPending ? "Processing Payment..." : "Confirm Payment & Activate Group"}
             </Button>
@@ -237,3 +272,4 @@ export default function FinalizeGroupCreationPage({ params }: FinalizeGroupCreat
     </div>
   )
 }
+

@@ -1,6 +1,6 @@
 "use client"
 
-import type { InvestmentGroup } from "@/lib/types"
+import type { Group } from "@/lib/types"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { Button } from "@/components/ui/button"
@@ -11,6 +11,7 @@ import { api } from "@/lib/api"
 import { useToast } from "@/components/ui/use-toast"
 import { useState } from "react"
 import { JoinGroupModal } from "@/components/groups/join-group-modal"
+import { useAuth } from "@/lib/auth-context"
 
 interface GroupDetailsPageProps {
   params: {
@@ -21,6 +22,7 @@ interface GroupDetailsPageProps {
 export default function GroupDetailsPage({ params }: GroupDetailsPageProps) {
   const { groupId } = params
   const { toast } = useToast()
+   const { user, token } = useAuth()
   const [isJoinModalOpen, setIsJoinModalOpen] = useState(false)
 
   const {
@@ -28,9 +30,9 @@ export default function GroupDetailsPage({ params }: GroupDetailsPageProps) {
     isLoading,
     isError,
     error,
-  } = useQuery<InvestmentGroup>({
+  } = useQuery<Group>({
     queryKey: ["groupDetails", groupId],
-    queryFn: () => api.getGroupDetails(groupId).then((res) => res.data),
+    queryFn: () => api.getGroupDetails(groupId, token as string, ).then((res) => res.data.data),
     enabled: !!groupId, // Only fetch if groupId is available
   })
 

@@ -102,9 +102,11 @@ export interface WalletFundingPayload {
   amount: number
   payment_method?: string
   transaction_id?: string
-  data: {
-			payment_url: string
-		}
+	payment_url: string
+
+  // data: {
+	// 		payment_url: string
+	// 	}
 }
 
 export interface UpdateUserPayload {

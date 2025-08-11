@@ -250,7 +250,8 @@ export default function DashboardPage() {
               const progress = (group.slotTaken / group.totalSlot) * 100;
               return (
                 <div
-                  key={group.id}
+                  // key={group.id}
+                  key={group.group_id }
                   className="border rounded-lg p-4 bg-white"
                 >
                   {" "}

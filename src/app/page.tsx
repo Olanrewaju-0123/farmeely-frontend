@@ -28,17 +28,17 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-20 text-center">
         <h1 className="text-5xl font-bold text-foreground mb-6">
-          Group Livestock Investment
+          Group Livestock Buying
           <span className="text-green-600"> Made Simple</span>
         </h1>
         <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-          Join investment groups, pool resources with other investors, and earn returns from livestock farming. Start
-          with as little as ₦5,000 and watch your investment grow.
+          Join Livestock groups, pool resources with other buyers. Start
+          with as little as ₦5,000.
         </p>
         <div className="space-x-4">
           <Link href="/auth/signup">
             <Button size="lg" className="px-8 py-3">
-              Start Investing Today
+              Start Buying Today
             </Button>
           </Link>
           <Button variant="outline" size="lg" className="px-8 py-3 bg-transparent">
@@ -49,23 +49,23 @@ export default function HomePage() {
         {/* Live Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 max-w-4xl mx-auto">
           <div className="text-center">
-            <div className="text-3xl font-bold text-green-600">₦2.5B+</div>
-            <div className="text-muted-foreground">Total Investments</div>
+            <div className="text-3xl font-bold text-green-600">₦2.5M+</div>
+            <div className="text-muted-foreground">Total Transaction</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-green-600">15,000+</div>
-            <div className="text-muted-foreground">Active Investors</div>
+            <div className="text-muted-foreground">Active Buyers</div>
           </div>
-          <div className="text-center">
+          {/* <div className="text-center">
             <div className="text-3xl font-bold text-green-600">25%</div>
             <div className="text-muted-foreground">Average Returns</div>
-          </div>
+          </div> */}
         </div>
       </section>
 
       {/* How It Works */}
       <section className="container mx-auto px-4 py-20">
-        <h2 className="text-3xl font-bold text-center mb-12 text-foreground">How Group Investment Works</h2>
+        <h2 className="text-3xl font-bold text-center mb-12 text-foreground">How Group Buying Works</h2>
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           <div className="text-center">
             <div className="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -73,7 +73,7 @@ export default function HomePage() {
             </div>
             <h3 className="text-xl font-semibold mb-2 text-foreground">Browse Groups</h3>
             <p className="text-muted-foreground">
-              Explore active investment groups for different livestock types. Each group shows real-time progress and
+              Explore active groups for different livestock types. Each group shows real-time progress and
               available slots.
             </p>
           </div>
@@ -83,7 +83,7 @@ export default function HomePage() {
             </div>
             <h3 className="text-xl font-semibold mb-2 text-foreground">Buy Slots</h3>
             <p className="text-muted-foreground">
-              Purchase slots in groups that match your budget and risk preference. Pool resources with other investors
+              Purchase slots in groups that match your budget and risk preference. Pool resources with other Buyers
               to reduce individual risk.
             </p>
           </div>
@@ -91,9 +91,9 @@ export default function HomePage() {
             <div className="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="text-2xl font-bold text-green-600">3</span>
             </div>
-            <h3 className="text-xl font-semibold mb-2 text-foreground">Earn Returns</h3>
+            <h3 className="text-xl font-semibold mb-2 text-foreground">Track Progress</h3>
             <p className="text-muted-foreground">
-              Track your investment progress and earn returns when livestock are sold. Get updates on group activities
+              Track your group progress and know when your livestock are available for dispatch. Get updates on group activities
               and performance.
             </p>
           </div>
@@ -103,7 +103,7 @@ export default function HomePage() {
       {/* Features Section */}
       <section className="bg-muted/50 py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Why Choose Group Investment?</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Why Choose Group Buying?</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <Card>
               <CardHeader>
@@ -112,7 +112,7 @@ export default function HomePage() {
               </CardHeader>
               <CardContent>
                 <CardDescription>
-                  Reduce individual risk by pooling resources with other investors. Share both costs and returns.
+                  Reduce individual risk by pooling resources with other investors. Share both costs and leave the  rest for us to take care of.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -124,7 +124,7 @@ export default function HomePage() {
               </CardHeader>
               <CardContent>
                 <CardDescription>
-                  Track real-time progress of your investment groups. See slots taken, funding progress, and updates.
+                  Track real-time progress of your groups. See slots taken, funding progress, and updates.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -136,7 +136,7 @@ export default function HomePage() {
               </CardHeader>
               <CardContent>
                 <CardDescription>
-                  Your investments are protected with secure payment processing and transparent group management.
+                  Your Money are protected with secure payment processing and transparent group management.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -144,11 +144,11 @@ export default function HomePage() {
             <Card>
               <CardHeader>
                 <Clock className="w-12 h-12 text-green-600 mb-4" />
-                <CardTitle>Flexible Investment</CardTitle>
+                <CardTitle>Flexible Payment</CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription>
-                  Start with small amounts, join multiple groups, and scale your investment portfolio over time.
+                  Start with small amounts, join multiple groups.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -159,7 +159,7 @@ export default function HomePage() {
       {/* Live Groups Preview */}
       <section className="container mx-auto px-4 py-20">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4 text-foreground">Active Investment Groups</h2>
+          <h2 className="text-3xl font-bold mb-4 text-foreground">Active Groups</h2>
           <p className="text-muted-foreground">Join these trending groups with live progress updates</p>
         </div>
 
@@ -168,7 +168,7 @@ export default function HomePage() {
           <Card>
             <CardHeader>
               <div className="flex justify-between items-center">
-                <CardTitle className="text-lg">Premium Cattle Group #12</CardTitle>
+                <CardTitle className="text-lg">Premium Cattle Group</CardTitle>
                 <span className="text-sm bg-green-100 text-green-800 px-2 py-1 rounded dark:bg-green-900 dark:text-green-400">
                   Active
                 </span>
@@ -220,7 +220,7 @@ export default function HomePage() {
           <Card>
             <CardHeader>
               <div className="flex justify-between items-center">
-                <CardTitle className="text-lg">Poultry Investment Hub</CardTitle>
+                <CardTitle className="text-lg">Poultry Hub</CardTitle>
                 <span className="text-sm bg-green-100 text-green-800 px-2 py-1 rounded dark:bg-green-900 dark:text-green-400">
                   Active
                 </span>
@@ -257,9 +257,9 @@ export default function HomePage() {
       {/* CTA Section */}
       <section className="bg-green-600 text-white py-20">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Start Group Investing?</h2>
+          <h2 className="text-3xl font-bold mb-4">Ready to Start Group Buying?</h2>
           <p className="text-xl mb-8 opacity-90">
-            Join thousands of investors earning returns through collaborative livestock investment
+            Join thousands of Buyers through collaborative livestock Buying
           </p>
           <Link href="/auth/signup">
             <Button size="lg" variant="secondary" className="px-8 py-3">
@@ -276,16 +276,16 @@ export default function HomePage() {
             <div>
               <div className="text-2xl font-bold text-green-600 mb-4">Farmeely</div>
               <p className="text-muted-foreground">
-                Making livestock investment accessible through group collaboration
+                Making livestock cheper and accessible through group collaboration
               </p>
             </div>
             <div>
               <h3 className="font-semibold mb-4">Platform</h3>
               <ul className="space-y-2 text-muted-foreground">
                 <li>How It Works</li>
-                <li>Investment Groups</li>
+                <li>Livestock Groups</li>
                 <li>Live Progress</li>
-                <li>Returns Calculator</li>
+                {/* <li></li> */}
               </ul>
             </div>
             <div>
@@ -294,7 +294,7 @@ export default function HomePage() {
                 <li>Help Center</li>
                 <li>Contact Us</li>
                 <li>FAQ</li>
-                <li>Investment Guide</li>
+                <li>Buying Guide</li>
               </ul>
             </div>
             <div>
@@ -303,12 +303,12 @@ export default function HomePage() {
                 <li>Terms of Service</li>
                 <li>Privacy Policy</li>
                 <li>Risk Disclosure</li>
-                <li>Investment Agreement</li>
+                <li>Agreement</li>
               </ul>
             </div>
           </div>
           <div className="border-t mt-8 pt-8 text-center text-muted-foreground">
-            <p>&copy; 2024 Farmeely. All rights reserved.</p>
+            <p>&copy; 2025 Farmeely. All rights reserved.</p>
           </div>
         </div>
       </footer>
