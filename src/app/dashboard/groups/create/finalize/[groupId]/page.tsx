@@ -33,6 +33,7 @@ export default function FinalizeGroupCreationPage({ params }: FinalizeGroupCreat
 
   const [paymentMethod, setPaymentMethod] = useState<"wallet" | "others">("wallet")
   const [error, setError] = useState<string | null>(null)
+  // const groupDetails: Group = data.data;
 
   // Fetch group details to get initial contribution amount
   const {
@@ -43,13 +44,14 @@ export default function FinalizeGroupCreationPage({ params }: FinalizeGroupCreat
   } = useQuery<Group>({
     queryKey: ["groupDetails", groupId],
     queryFn: () => api.getGroupDetails(groupId, token as string).then((res) => res.data),
-    enabled: !!groupId, 
+    enabled: !!groupId && !!token,
   })
+
   console.log("=== FINALIZE PAGE DEBUG ===")
   console.log("Group Details Raw:", groupDetails)
   console.log("Group ID:", groupId)
   console.log("Slot Price:", groupDetails?.slotPrice)
-  console.log("Creator Initial Slots:", groupDetails?.creatorInitialSlots)
+  // console.log("Creator Initial Slots:", groupDetails?.creatorInitialSlots)
   console.log("Total Slot:", groupDetails?.totalSlot)
   console.log("Slot Taken:", groupDetails?.slotTaken)
   console.log("Status:", groupDetails?.status)
@@ -82,7 +84,7 @@ export default function FinalizeGroupCreationPage({ params }: FinalizeGroupCreat
       // } else if (data.createDetails?.paymentLink) {
         // This case should ideally not happen if backend correctly redirects for 'others'
         // but as a fallback, if a paymentLink is returned, redirect the user.
-      } else if (data.createDetails?.paymentLink) {
+      } else if ( 'createDetails' in data && data.createDetails?.paymentLink) {
         window.location.href = data.createDetails?.paymentLink
       } else {
         setError(data.message || "Failed to finalize group creation.")
@@ -113,7 +115,7 @@ export default function FinalizeGroupCreationPage({ params }: FinalizeGroupCreat
       return
     }
     const slotPrice = Number(groupDetails.slotPrice) || 0
-       const creatorSlots = Number(groupDetails.creator.creatorInitialSlots) || 1
+       const creatorSlots = Number(groupDetails.slotTaken) || 1
     // const initialContributionCost = groupDetails.slotPrice * (groupDetails.creatorInitialSlots || 1)
     const initialContributionCost = slotPrice * creatorSlots
 
@@ -175,7 +177,7 @@ export default function FinalizeGroupCreationPage({ params }: FinalizeGroupCreat
   }
 
   const slotPrice = Number(groupDetails.slotPrice) || 0
-  const creatorSlots = Number(groupDetails.creatorInitialSlots) || 1
+  const creatorSlots = Number(groupDetails.slotTaken) || 1
   const initialContributionCost = slotPrice * creatorSlots
   const canAffordWithWallet = walletBalance >= initialContributionCost
 
@@ -203,7 +205,7 @@ export default function FinalizeGroupCreationPage({ params }: FinalizeGroupCreat
             <div className="bg-gray-50 p-4 rounded-lg space-y-2">
               <div className="flex justify-between">
                 <span>Group Name:</span>
-                <span className="font-semibold">{groupDetails.groupName}</span>
+                <span className="font-semibold">{groupDetails.groupName || groupDetails.group_name}</span>
               </div>
               <div className="flex justify-between">
                 <span>Your Initial Slots:</span>

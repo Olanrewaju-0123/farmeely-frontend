@@ -27,7 +27,8 @@ export default function CreateGroupPage() {
     livestock_id: "",
     slotPrice: 0, // This will be the chosen price per slot for the group
     totalSlot: 0, // This will be calculated based on livestock price and chosen slotPrice
-    creatorInitialSlots: 1, // Default to 1 slot for the creator
+    // creatorInitialSlots: 1, // Default to 1 slot for the creator
+    slotTaken:1,
   })
   const [selectedLivestock, setSelectedLivestock] = useState<Livestock | null>(null)
   const [error, setError] = useState<string | null>(null)
@@ -57,7 +58,7 @@ export default function CreateGroupPage() {
     },
     onSuccess: (response) => {
       console.log("Group creation response:", response)
-      const groupId = response?.data?.group_id || response?.group_id || response?.data?.id
+      const groupId = response?.data?.group_id || response?.group_id
       if (response.status === "success" && response.data?.group_id && groupId) {
         toast({
           title: "Group Draft Created!",
@@ -65,7 +66,7 @@ export default function CreateGroupPage() {
         })
         router.push(`/dashboard/groups/create/finalize/${response.data.group_id}`)
       } else {
-        const errorMessage = response.message || response.error || "Failed to create group draft."
+        const errorMessage = response.message || "Failed to create group draft."
         setError(errorMessage)
         toast({
           title: "Error",
@@ -138,24 +139,25 @@ export default function CreateGroupPage() {
     e.preventDefault()
     setError(null)
 
-    if (
-      !formData.groupName.trim() ||
-      !formData.description.trim() ||
-      !formData.livestock_id ||
-      formData.slotPrice <= 0 ||
-      formData.totalSlot <= 0 ||
-      formData.creatorInitialSlots <= 0
-    ) {
-      setError("Please fill in all required fields and ensure valid slot and total values.")
-      toast({
-        title: "Validation Error",
-        description: "Please fill in all required fields and ensure valid slot and total values.",
-        variant: "destructive",
-      })
+if (
+  !formData.groupName.trim() ||
+  !formData.description.trim() ||
+  !formData.livestock_id ||
+  formData.slotPrice <= 0 ||
+  formData.totalSlot <= 0 ||
+  // formData.creatorInitialSlots <= 0 ||
+  formData.slotTaken <= 0
+) {
+  setError("Please fill in all required fields and ensure valid slot and total values.")
+  toast({
+    title: "Validation Error",
+    description: "Please fill in all required fields and ensure valid slot and total values.",
+    variant: "destructive",
+  })
       return
     }
 
-    if (formData.creatorInitialSlots > formData.totalSlot) {
+    if (formData.slotTaken > formData.totalSlot) {
       const errorMessage = "Initial slots cannot exceed total slots"
       setError(errorMessage)
       toast({
@@ -173,7 +175,8 @@ export default function CreateGroupPage() {
         description: formData.description,
         totalSlot: formData.totalSlot,
         slotPrice: formData.slotPrice,
-        creatorInitialSlots: formData.creatorInitialSlots,
+        slotTaken: formData.slotTaken,
+        // creatorInitialSlots: formData.creatorInitialSlots
       }
       console.log("Submitting payload:", payload)
       await createGroupDraftMutation.mutateAsync(payload)
@@ -316,13 +319,13 @@ export default function CreateGroupPage() {
               <h3 className="text-lg font-semibold">Your Contribution</h3>
               <Separator />
               <div className="space-y-2">
-                <Label htmlFor="creatorInitialSlots">Number of Slots You'd like to Take (Initial Contribution)</Label>
+                <Label htmlFor="slotTaken">Number of Slots You'd like to Take (Initial Contribution)</Label>
                 <Input
-                  id="creatorInitialSlots"
-                  name="creatorInitialSlots"
+                  id="slotTaken"
+                  name="slotTaken"
                   type="number"
-                  value={formData.creatorInitialSlots}
-                  onChange={(e) => setFormData((prev) => ({ ...prev, creatorInitialSlots: Number(e.target.value) }))}
+                  value={formData.slotTaken}
+                  onChange={(e) => setFormData((prev) => ({ ...prev, slotTaken: Number(e.target.value) }))}
                   min={1}
                   max={formData.totalSlot > 0 ? formData.totalSlot : 1} // Max is total slots, or 1 if totalSlot is 0
                   required
@@ -334,7 +337,7 @@ export default function CreateGroupPage() {
                 <div className="flex justify-between">
                   <span>Cost of your initial contribution:</span>
                   <span className="font-semibold">
-                    ₦{(formData.slotPrice * formData.creatorInitialSlots).toLocaleString()}
+                    ₦{(formData.slotPrice * formData.slotTaken).toLocaleString()}
                   </span>
                 </div>
               </div>
@@ -354,8 +357,8 @@ export default function CreateGroupPage() {
                 isLoadingPage ||
                 !selectedLivestock ||
                 formData.slotPrice <= 0 ||
-                formData.creatorInitialSlots <= 0 ||
-                formData.creatorInitialSlots > formData.totalSlot
+                formData.slotTaken <= 0 ||
+                formData.slotTaken > formData.totalSlot
               }
             >
               {createGroupDraftMutation.isPending ? "Creating Draft..." : "Create Group Draft"}

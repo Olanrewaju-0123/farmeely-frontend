@@ -20,12 +20,13 @@ export default function CompleteGroupCreationPage() {
 
   const [statusMessage, setStatusMessage] = useState("Processing your group creation payment...")
   const [isErrorState, setIsErrorState] = useState(false) // Use a distinct state for local errors
+  const [paymentMethod, setPaymentMethod] = useState<"wallet" | "others">("wallet");
 
   const reference = searchParams.get("reference") // Paystack sends a 'reference' parameter
   const groupId = searchParams.get("group_id") // Assuming you pass group_id back from Paystack callback
 
   const completeCreationMutation = useMutation({
-    mutationFn: async (payload: { group_Id: string; paymentReference: string }) => {
+    mutationFn: async (payload: { groupId: string; paymentMethod: string; paymentReference: string }) => {
       return api.completeCreateGroup( payload, token as string
         // group_id: payload.group_id,
         // paymentMethod: "others", // Assuming this page is only for 'others' payment method callbacks
@@ -70,7 +71,7 @@ export default function CompleteGroupCreationPage() {
 
   useEffect(() => {
     if (reference && groupId && token) {
-      completeCreationMutation.mutate({ groupId: groupId, paymentMethod: "others", paymentReference: reference })
+      completeCreationMutation.mutate({ groupId: groupId, paymentMethod: paymentMethod, paymentReference: reference })
     } else {
       setStatusMessage("Missing payment reference or group ID. Please try creating your group again.")
       setIsErrorState(true)

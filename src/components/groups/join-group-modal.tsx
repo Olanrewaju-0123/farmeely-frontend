@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useForm } from "react-hook-form"
+import { SubmitHandler, useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
@@ -15,6 +15,7 @@ import { useAuth } from "@/lib/auth-context"
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation"
 import type { Group } from "@/lib/types"
+import { formatCurrency } from "@/lib/utils"
 
 interface JoinGroupModalProps {
   groupId: number // Expecting a number here
@@ -22,20 +23,41 @@ interface JoinGroupModalProps {
   onClose: () => void
 }
 
+interface JoinGroupModalProps {
+  group: Group | null
+  isOpen: boolean
+  onClose: () => void
+  onJoin: (groupId: string, slots: number, paymentMethod: "wallet" | "others") => void
+  walletBalance: number
+}
+
 const formSchema = z.object({
   slots_taken: z.coerce.number().min(1, "Please enter at least 1 slot."),
-  payment_method: z.enum(["wallet", "external"], {
+  payment_method: z.enum(["wallet", "others"], {
     required_error: "Please select a payment method.",
   }),
 })
 
-export function JoinGroupModal({ groupId, isOpen, onClose }: JoinGroupModalProps) {
+export function JoinGroupModal({ group, isOpen, onClose, onJoin, walletBalance }: JoinGroupModalProps) {
   const { user, token } = useAuth()
   const { toast } = useToast()
   const router = useRouter()
   const [groupDetails, setGroupDetails] = useState<Group | null>(null)
   const [isLoadingGroup, setIsLoadingGroup] = useState(true)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [slots, setSlots] = useState(1)
+  const [paymentMethod, setPaymentMethod] = useState<"wallet" | "others"> ("wallet")
+
+  if (!group) return null
+
+  const totalCost = slots * group.slotPrice
+  const canAffordWithWallet = walletBalance >= totalCost
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    onJoin(group.group_id, slots, paymentMethod)
+    onClose()
+  }
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -46,10 +68,10 @@ export function JoinGroupModal({ groupId, isOpen, onClose }: JoinGroupModalProps
   })
 
   useEffect(() => {
-    if (isOpen && groupId && token) {
+    if (isOpen && group && token) {
       setIsLoadingGroup(true)
       api
-        .getGroupById(groupId.toString(), token) // API expects string ID
+        .getGroupById(group.toString(), token) // API expects string ID
         .then((res) => {
           if (res.status === "success" && res.data) {
             setGroupDetails(res.data)
@@ -76,9 +98,10 @@ export function JoinGroupModal({ groupId, isOpen, onClose }: JoinGroupModalProps
           setIsLoadingGroup(false)
         })
     }
-  }, [isOpen, groupId, token, toast, onClose, form])
+  }, [isOpen, group, token, toast, onClose, form])
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  // const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const onSubmit: SubmitHandler<z.infer<typeof formSchema>> = async (values) => {
     if (!user || !token || !groupDetails) {
       toast({
         title: "Error",
@@ -99,7 +122,7 @@ export function JoinGroupModal({ groupId, isOpen, onClose }: JoinGroupModalProps
         amount_paid: amount_paid,
       }
 
-      const response = await api.joinGroup(groupId, payload, token)
+      const response = await api.joinGroup(group, payload, token)
 
       if (response.status === "success") {
         toast({
@@ -225,4 +248,68 @@ export function JoinGroupModal({ groupId, isOpen, onClose }: JoinGroupModalProps
       </DialogContent>
     </Dialog>
   )
+
+  // return (
+  //   <Dialog open={isOpen} onOpenChange={onClose}>
+  //     <DialogContent className="sm:max-w-md">
+  //       <DialogHeader>
+  //         <DialogTitle>Join {group.groupName}</DialogTitle>
+  //         <DialogDescription>Choose how many slots you want to purchase in this group.</DialogDescription>
+  //       </DialogHeader>
+
+  //       <form onSubmit={handleSubmit} className="space-y-4">
+  //         <div className="space-y-2">
+  //           <Label htmlFor="slots">Number of Slots</Label>
+  //           <Input
+  //             id="slots"
+  //             type="number"
+  //             min={1}
+  //             max={group.totalSlotLeft}
+  //             value={slots}
+  //             onChange={(e) => setSlots(Number(e.target.value))}
+  //             required
+  //           />
+  //           <p className="text-sm text-muted-foreground">Available slots: {group.totalSlotLeft}</p>
+  //         </div>
+
+  //         <div className="bg-gray-50 p-3 rounded-lg">
+  //           <div className="flex justify-between">
+  //             <span>Total Cost:</span>
+  //             <span className="font-semibold">{formatCurrency(totalCost)}</span>
+  //           </div>
+  //         </div>
+
+  //         <div className="space-y-3">
+  //           <Label>Payment Method</Label>
+  //           <RadioGroup value={paymentMethod} onValueChange={(value: "wallet" | "others") => setPaymentMethod(value)}>
+  //             <div className="flex items-center space-x-2">
+  //               <RadioGroupItem value="wallet" id="wallet" />
+  //               <Label htmlFor="wallet" className="flex-1">
+  //                 <div className="flex justify-between">
+  //                   <span>Wallet Balance</span>
+  //                   <span className={canAffordWithWallet ? "text-green-600" : "text-red-600"}>
+  //                     {formatCurrency(walletBalance)}
+  //                   </span>
+  //                 </div>
+  //               </Label>
+  //             </div>
+  //             <div className="flex items-center space-x-2">
+  //               <RadioGroupItem value="others" id="others" />
+  //               <Label htmlFor="others">Card/Bank Transfer</Label>
+  //             </div>
+  //           </RadioGroup>
+  //         </div>
+
+  //         <div className="flex gap-2">
+  //           <Button type="button" variant="outline" onClick={onClose} className="flex-1 bg-transparent">
+  //             Cancel
+  //           </Button>
+  //           <Button type="submit" className="flex-1" disabled={paymentMethod === "wallet" && !canAffordWithWallet}>
+  //             Join Group
+  //           </Button>
+  //         </div>
+  //       </form>
+  //     </DialogContent>
+  //   </Dialog>
+  // )
 }

@@ -102,6 +102,7 @@ ToastDescription.displayName = ToastPrimitives.Description.displayName
 
 type ToasterProps = {
   toasts: React.ComponentPropsWithoutRef<typeof Toast>[]
+  
 }
 
 export { type ToasterProps, ToastProvider, ToastViewport, Toast, ToastTitle, ToastDescription, ToastClose, ToastAction }

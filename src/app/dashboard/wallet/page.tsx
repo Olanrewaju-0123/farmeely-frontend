@@ -77,7 +77,7 @@ export default function WalletPage() {
         amount: variables.amount,
         payment_method: variables.payment_method,
       };
-      return await api.startWalletFunding(payload, token);
+      return await api.startWalletFunding(payload, token as string);
     },
     onSuccess: (response: ApiResponse<WalletFundingPayload>) => {
       console.log("=== WALLET FUNDING DEBUG ===");
@@ -98,19 +98,19 @@ export default function WalletPage() {
 
       const hasPaymentUrl =
         response.data &&
-        response.data.payment_url &&
-        response.data.payment_url.trim().length > 0;
+        response.data?.payment_url &&
+        response.data?.payment_url.trim().length > 0;
       // console.log("Frontend: startFundingMutation onSuccess response:", response)
 
       // Check if response is successful and has payment_url
       if (response.status === "success" && hasPaymentUrl) {
-        console.log("Redirecting to:", response.data.payment_url);
+        console.log("Redirecting to:", response.data?.payment_url);
         toast({
           title: "Payment Initiated",
           description: "Redirecting to payment gateway...",
         });
         // Redirect to external payment gateway
-        window.location.href = response.data.payment_url;
+        window.location.href = response.data?.payment_url ?? "";
       } else if (response.status === "success") {
         console.log("Success response but no payment URL found");
         // Success but no payment URL (maybe for wallet funding)
@@ -128,7 +128,7 @@ export default function WalletPage() {
         toast({
           title: "Error",
           description:
-            response.message || response.error || "Failed to initiate funding.",
+            response.message || "Failed to initiate funding.",
           variant: "destructive",
         });
       }

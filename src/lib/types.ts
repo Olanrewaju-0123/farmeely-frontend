@@ -2,8 +2,9 @@ export interface ApiResponse<T = any> {
   status: "success" | "error"
   message?: string
   data?: T
+  group_id?: string
   token?: string // Optional token for login/signup responses
-  error?: string // Optional error message
+  // error?: string // Optional error message
 }
 
 export interface User {
@@ -67,7 +68,8 @@ export interface StartCreateGroupPayload {
   description: string;
   totalSlot: number;
   slotPrice: number;
-  creatorInitialSlots: number;
+  // creatorInitialSlots: number;
+  slotTaken: number;
 }
 
 export interface CompleteCreateGroupPayload {
@@ -102,7 +104,7 @@ export interface WalletFundingPayload {
   amount: number
   payment_method?: string
   transaction_id?: string
-	payment_url: string
+	payment_url?: string
 
   // data: {
 	// 		payment_url: string
@@ -200,7 +202,7 @@ export interface InitializePaymentPayload {
   group_id: string
   slots: number
   amount: number
-  paymentMethod: string
+  paymentMethod?: string
 }
 
 export interface InitializePaymentResponse {

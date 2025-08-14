@@ -16,11 +16,16 @@ import {
   Plus,
   Clock,
   DollarSign,
+  Link2,
 } from "lucide-react"; // Added DollarSign for consistency
 import Link from "next/link";
 import { api } from "@/lib/api";
 import type { ApiResponse, Group, JoinGroupPayload } from "@/lib/types";
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import { GroupCard } from "@/components/groups/group-card";
+import { JoinGroupModal } from "@/components/groups/join-group-modal";
+import { link } from "fs";
 
 
 // interface AuthUser {
@@ -32,6 +37,9 @@ import { useQuery } from "@tanstack/react-query";
 
 export default function DashboardPage() {
   const { user, token } = useAuth()
+  const [isJoinModalOpen, setIsJoinModalOpen] = useState(false);
+  const [selectedGroupToJoin, setSelectedGroupToJoin] = useState<Group | null>(null)
+
 
   // Fetch wallet balance
   const { data: walletBalance = 0, isLoading: isLoadingWalletBalance } =
@@ -54,27 +62,26 @@ export default function DashboardPage() {
 
     
 
-  // Fetch user's groups
-  const { data: myGroupsData = [], isLoading: isLoadingMyGroups } = useQuery<
-    Group[]
-  >({
-    queryKey: ["myGroups"],
-    queryFn: () => api.getMyGroups(token ?? "").then((res) => res.data || []),
+  // Fetch user's groups - FIXED: Use the correct endpoint
+  const { data: myGroupsData = [], isLoading: isLoadingMyGroups } = useQuery<Group[]>({
+    queryKey: ["myJoinedGroups"],
+    queryFn: () => api.getMyJoinedGroups(token ?? "").then((res) => res.data || []),
     enabled: !!token,
-  });
+  })
   console.log('myGroupsData:', myGroupsData);
 // console.log('Sample participation:', myGroupsData?.[0]);
   const isLoading =
     isLoadingWalletBalance || isLoadingActiveGroups || isLoadingMyGroups;
 
-  // Calculate derived stats
+  // Calculate derived stats - FIXED: Handle the data structure properly
   const totalGroup = Array.isArray(myGroupsData)
-    ? myGroupsData.reduce(
-        (sum, group) =>
-          sum + (group?.slotPrice || 0) * group.userSlots!,
-        0
-      )
-    : 0;
+    ? myGroupsData.reduce((sum, group) => {
+        const slotPrice = group?.slotPrice || 0
+        const userSlots = group?.userSlots || 0
+        return sum + slotPrice * userSlots
+      }, 0)
+    : 0
+
   const totalReturns = 0; // This would come from completed, keeping as 0 for now
 
   const recentGroups = Array.isArray(activeGroupsData)
@@ -83,6 +90,16 @@ export default function DashboardPage() {
   const myRecentGroups = Array.isArray(myGroupsData)
     ? myGroupsData.slice(0, 3)
     : [];
+  const handleJoinGroupClick = (group: Group) => {
+    setSelectedGroupToJoin(group)
+    setIsJoinModalOpen(true)
+  }
+
+  const handleCloseJoinModal = () => {
+    setIsJoinModalOpen(false)
+    setSelectedGroupToJoin(null)
+  }
+
 
   if (isLoading) {
     return (
@@ -119,7 +136,7 @@ export default function DashboardPage() {
               ₦{walletBalance.toLocaleString()}
             </div>
             <p className="text-xs text-muted-foreground">
-              Available for 
+              Available fund
             </p>
           </CardContent>
         </Card>
@@ -243,35 +260,41 @@ export default function DashboardPage() {
           {/* Added shadow */}
           <CardHeader>
             <CardTitle>Trending Groups</CardTitle>
-            <CardDescription>Popular groups with high activity</CardDescription>
+            <CardDescription>Popular groups with high activity - Click to join!</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            {recentGroups.map((group) => {
-              const progress = (group.slotTaken / group.totalSlot) * 100;
-              return (
-                <div
-                  // key={group.id}
-                  key={group.group_id }
-                  className="border rounded-lg p-4 bg-white"
-                >
-                  {" "}
-                  {/* Added bg-white */}
-                  <div className="flex justify-between items-start mb-2">
-                    <h4 className="font-medium">{group.group_name}</h4>
-                    <span className="text-sm text-green-600">
-                      ₦{group.slotPrice.toLocaleString()}/slot
-                    </span>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="flex justify-between text-sm">
-                      <span>{Math.round(progress)}% funded</span>
-                      <span>{group.totalSlot - group.slotTaken} slots left</span>
-                    </div>
-                    <Progress value={progress} className="h-2" />
-                  </div>
-                </div>
-              );
-            })}
+            {recentGroups.map((group) => (
+              <GroupCard
+                key={group.group_id || group.id || `group-${Math.random()}`}
+                group={group}
+                onJoin={handleJoinGroupClick}
+                showJoinButton={true}
+              />
+              // const progress = (group.slotTaken / group.totalSlot) * 100;
+              // return (
+              //   <div
+              //     // key={group.id}
+              //     key={group.group_id }
+              //     className="border rounded-lg p-4 bg-white"
+              //   >
+              //     {" "}
+              //     {/* Added bg-white */}
+              //     <div className="flex justify-between items-start mb-2">
+              //       <h4 className="font-medium">{group.group_name}</h4>
+              //       <span className="text-sm text-green-600">
+              //         ₦{group.slotPrice.toLocaleString()}/slot
+              //       </span>
+              //     </div>
+              //     <div className="space-y-2">
+              //       <div className="flex justify-between text-sm">
+              //         <span>{Math.round(progress)}% funded</span>
+              //         <span>{group.totalSlot - group.slotTaken} slots left</span>
+              //       </div>
+              //       <Progress value={progress} className="h-2" />
+              //     </div>
+              //   </div>
+              // );
+            ))}
             {recentGroups.length === 0 && (
               <p className="text-center text-muted-foreground py-4">
                 No active groups available
@@ -289,32 +312,32 @@ export default function DashboardPage() {
             <CardDescription>Your latest group participations</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            {myRecentGroups.map((participation) => (
+            {myRecentGroups.map((group) => (
               <div
-                key={participation.group_id}
+                key={group.group_id || group.id || `my-group-${Math.random()}`}
                 className="border rounded-lg p-4 bg-white"
               >
                 {" "}
                 {/* Added bg-white */}
                 <div className="flex justify-between items-start mb-2">
                   <h4 className="font-medium">
-                    {participation.group_name}
+                    {group.group_name || group.groupName}
                   </h4>
                   <span className="text-sm text-blue-600">
-                    {participation.userSlots} slots
+                    {group.userSlots || 0} slots
                   </span>
                 </div>
                 <div className="flex justify-between text-sm text-muted-foreground">
                   <span>
                     Investment: ₦
                     {(
-                      (participation.slotPrice || 0) *
-                      participation.userSlots!
+                      (group.slotPrice || 0) *
+                      group.userSlots!
                     ).toLocaleString()}
                   </span>
                   <span className="flex items-center">
                     <Clock className="w-3 h-3 mr-1" />
-                    {new Date(participation.joinedAt!).toLocaleDateString()}
+                    {group.joinedAt? new Date(group.joinedAt).toLocaleDateString(): "N/A"}
                   </span>
                 </div>
               </div>
@@ -338,6 +361,13 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
       </div>
+      {selectedGroupToJoin && (
+        <JoinGroupModal
+          group={selectedGroupToJoin}
+          isOpen={isJoinModalOpen}
+          onClose={handleCloseJoinModal}
+        />
+      )}
     </div>
   );
 }
