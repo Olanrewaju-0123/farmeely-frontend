@@ -2,17 +2,21 @@
 
 # dependencies
 /node_modules
+frontend/node_modules
+backend/node_modules
 .env.local
 
 # testing
 /coverage
+frontend/coverage
+backend/coverage
 
 # next.js
-/.next/
-/out/
+frontend/.next/
+frontend/out/
 
 # production
-/build
+frontend/build
 
 # misc
 .DS_Store
@@ -26,10 +30,31 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+frontend/.env*
+backend/.env*
 
 # vercel
-.vercel
+frontend/.vercel
 
 # typescript
-*.tsbuildinfo
-next-env.d.ts
+frontend/*.tsbuildinfo
+frontend/next-env.d.ts
+
+# Backend specific
+backend/logs
+backend/uploads
+
+# Documentation files (exclude all .md files except README.md)
+*.md
+!README.md
+!**/README.md
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+docker-compose.prod.yml
+*.dockerfile
+
+# Docker volumes
+mysql_data/
+redis_data/
