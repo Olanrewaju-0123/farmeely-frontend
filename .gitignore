@@ -49,6 +49,9 @@ backend/uploads
 !README.md
 !**/README.md
 
+# Shell scripts (keep local)
+*.sh
+
 # Docker
 .dockerignore
 docker-compose.override.yml
