@@ -2,21 +2,21 @@
   "version": 2,
   "builds": [
     {
-      "src": "frontend/package.json",
-      "use": "@vercel/next"
+      "src": "api/index.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "frontend/$1"
+      "dest": "api/index.js"
     }
   ],
   "env": {
-    "NEXT_PUBLIC_API_URL": "@api_url"
+    "NODE_ENV": "production"
   },
   "functions": {
-    "frontend/pages/api/**/*.js": {
+    "api/index.js": {
       "maxDuration": 30
     }
   }
