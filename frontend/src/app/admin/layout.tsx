@@ -1,14 +1,13 @@
 "use client";
 
-import type React from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "@/lib/auth-context";
-import { DashboardNav } from "@/components/dashboard/dashboard-nav";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 import { LoadingPage } from "@/components/loading-spinner";
 import ErrorBoundary from "@/components/error-boundary";
+import { AdminNav } from "@/components/admin/admin-nav";
 
-export default function DashboardLayout({
+export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -18,22 +17,22 @@ export default function DashboardLayout({
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   useEffect(() => {
-    if (!isLoading && !user) {
-      router.push("/auth/login");
+    if (!isLoading && (!user || user.role !== "admin")) {
+      router.push("/dashboard");
     }
   }, [user, isLoading, router]);
 
   if (isLoading) {
-    return <LoadingPage text="Loading dashboard..." />;
+    return <LoadingPage text="Loading admin dashboard..." />;
   }
 
-  if (!user) {
+  if (!user || user.role !== "admin") {
     return null;
   }
 
   return (
     <div className="min-h-screen flex bg-gray-50">
-      <DashboardNav
+      <AdminNav
         isCollapsed={isCollapsed}
         toggleCollapsed={() => setIsCollapsed(!isCollapsed)}
       />

@@ -12,7 +12,7 @@ services:
       MYSQL_USER: farmeely_user
       MYSQL_PASSWORD: farmeely_password
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - mysql_data:/var/lib/mysql
       - ./backend/migrations:/docker-entrypoint-initdb.d
@@ -29,7 +29,7 @@ services:
     container_name: farmeely-redis
     restart: unless-stopped
     ports:
-      - "6379:6379"
+      - "6380:6379"
     volumes:
       - redis_data:/data
     networks:
@@ -70,7 +70,7 @@ services:
       mysql:
         condition: service_healthy
       redis:
-        condition: service_healthy
+        condition: service_started
     networks:
       - farmeely-network
     healthcheck:
@@ -95,8 +95,7 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      backend:
-        condition: service_healthy
+      - backend
     networks:
       - farmeely-network
     healthcheck:

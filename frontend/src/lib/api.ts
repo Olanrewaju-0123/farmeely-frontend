@@ -17,8 +17,7 @@ import type {
   CompleteCreateGroupResponse,
 } from "./types";
 
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:2025";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:2025";
 
 class ApiClient {
   private async request<T>(
@@ -355,6 +354,105 @@ class ApiClient {
     return this.request(
       `/groups/${groupId}`,
       "DELETE",
+      undefined,
+      undefined,
+      authToken
+    );
+  }
+
+  // Admin API methods
+  getAdminDashboardStats(authToken: string): Promise<ApiResponse<any>> {
+    return this.request(
+      "/admin/dashboard/stats",
+      "GET",
+      undefined,
+      undefined,
+      authToken
+    );
+  }
+
+  getAdminUsers(
+    authToken: string,
+    params?: { page?: number; limit?: number; search?: string }
+  ): Promise<ApiResponse<any>> {
+    const queryParams = new URLSearchParams();
+    if (params?.page) queryParams.append("page", params.page.toString());
+    if (params?.limit) queryParams.append("limit", params.limit.toString());
+    if (params?.search) queryParams.append("search", params.search);
+
+    const queryString = queryParams.toString();
+    const endpoint = queryString
+      ? `/admin/users?${queryString}`
+      : "/admin/users";
+
+    return this.request(endpoint, "GET", undefined, undefined, authToken);
+  }
+
+  getAdminUserById(
+    userId: string,
+    authToken: string
+  ): Promise<ApiResponse<any>> {
+    return this.request(
+      `/admin/users/${userId}`,
+      "GET",
+      undefined,
+      undefined,
+      authToken
+    );
+  }
+
+  updateUserStatus(
+    userId: string,
+    isActive: boolean,
+    authToken: string
+  ): Promise<ApiResponse> {
+    return this.request(
+      `/admin/users/${userId}/status`,
+      "PATCH",
+      { isActive },
+      undefined,
+      authToken
+    );
+  }
+
+  getAdminGroups(
+    authToken: string,
+    params?: { page?: number; limit?: number; status?: string }
+  ): Promise<ApiResponse<any>> {
+    const queryParams = new URLSearchParams();
+    if (params?.page) queryParams.append("page", params.page.toString());
+    if (params?.limit) queryParams.append("limit", params.limit.toString());
+    if (params?.status) queryParams.append("status", params.status);
+
+    const queryString = queryParams.toString();
+    const endpoint = queryString
+      ? `/admin/groups?${queryString}`
+      : "/admin/groups";
+
+    return this.request(endpoint, "GET", undefined, undefined, authToken);
+  }
+
+  getAdminTransactions(
+    authToken: string,
+    params?: { page?: number; limit?: number; status?: string }
+  ): Promise<ApiResponse<any>> {
+    const queryParams = new URLSearchParams();
+    if (params?.page) queryParams.append("page", params.page.toString());
+    if (params?.limit) queryParams.append("limit", params.limit.toString());
+    if (params?.status) queryParams.append("status", params.status);
+
+    const queryString = queryParams.toString();
+    const endpoint = queryString
+      ? `/admin/transactions?${queryString}`
+      : "/admin/transactions";
+
+    return this.request(endpoint, "GET", undefined, undefined, authToken);
+  }
+
+  getAdminAnalytics(authToken: string): Promise<ApiResponse<any>> {
+    return this.request(
+      "/admin/analytics",
+      "GET",
       undefined,
       undefined,
       authToken
