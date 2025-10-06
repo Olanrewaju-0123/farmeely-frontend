@@ -1,0 +1,20 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 30
+    },
+    "auditLog": "C:\\Users\\DELL 7389\\Desktop\\farmeely-frontend\\backend\\logs\\.72a832e68a89a2f35c206561e8baee72783ecbc2-audit.json",
+    "files": [
+        {
+            "date": 1757408127926,
+            "name": "C:\\Users\\DELL 7389\\Desktop\\farmeely-frontend\\backend\\logs\\error-2025-09-09.log",
+            "hash": "15f0b9eaf036e28e4b91c58985c879447d7a7d524094c73d6c8c5e31868233c6"
+        },
+        {
+            "date": 1759573312123,
+            "name": "C:\\Users\\DELL 7389\\Desktop\\farmeely-frontend\\backend\\logs\\error-2025-10-04.log",
+            "hash": "372b875f3a85a374263139d35783e1ba6102ffd265dc444ccb71cbe78771f8a1"
+        }
+    ],
+    "hashType": "sha256"
+}

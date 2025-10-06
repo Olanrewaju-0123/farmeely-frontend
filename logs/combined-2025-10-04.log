@@ -1,0 +1,3468 @@
+2025-10-04 10:20:48.548 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "port": "2025"
+}
+2025-10-04 10:20:48.630 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "production"
+}
+2025-10-04 10:20:49.427 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "production"
+}
+2025-10-04 10:20:53.144 [INFO]: Database tables synced successfully
+{
+  "service": "farmeely-backend",
+  "environment": "production"
+}
+2025-10-04 10:20:53.188 [INFO]: Server started successfully
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "port": "2025"
+}
+2025-10-04 10:21:49.480 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "52ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:21:59.891 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "3ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:00.011 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:00.193 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "20ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:00.336 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:01.329 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "12ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:01.460 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "2ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:01.597 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "2ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 11:22:00.663 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 11:22:00.715 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 10:22:01.721 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "3ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:01.846 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "2ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:01.977 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:02.142 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:02.443 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/groups/active",
+  "statusCode": 401,
+  "responseTime": "93ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:02.591 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/groups/active",
+  "statusCode": 401,
+  "responseTime": "17ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:02.734 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/groups/active",
+  "statusCode": 401,
+  "responseTime": "11ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:02.873 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/groups/active",
+  "statusCode": 401,
+  "responseTime": "2ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:02.993 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/groups/active",
+  "statusCode": 401,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:03.140 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/groups/active",
+  "statusCode": 401,
+  "responseTime": "2ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 11:22:02.410 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 10:22:03.271 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/groups/active",
+  "statusCode": 401,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:03.383 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/groups/active",
+  "statusCode": 401,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:03.507 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/groups/active",
+  "statusCode": 401,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:03.639 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/groups/active",
+  "statusCode": 401,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 11:22:02.926 [INFO]: Database tables synced successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:22:02.961 [INFO]: Server started successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 10:22:03.773 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/livestocks",
+  "statusCode": 401,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:03.888 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/livestocks",
+  "statusCode": 401,
+  "responseTime": "2ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:04.011 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/livestocks",
+  "statusCode": 401,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:04.141 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/livestocks",
+  "statusCode": 401,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:04.263 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/livestocks",
+  "statusCode": 401,
+  "responseTime": "3ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:04.378 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/livestocks",
+  "statusCode": 401,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:04.484 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/livestocks",
+  "statusCode": 401,
+  "responseTime": "3ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:04.603 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/livestocks",
+  "statusCode": 401,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:04.721 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/livestocks",
+  "statusCode": 401,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:04.846 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/livestocks",
+  "statusCode": 401,
+  "responseTime": "2ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:04.991 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/users/profile",
+  "statusCode": 401,
+  "responseTime": "7ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:05.138 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/users/profile",
+  "statusCode": 401,
+  "responseTime": "2ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:05.267 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/users/profile",
+  "statusCode": 401,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:05.425 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/users/profile",
+  "statusCode": 401,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:05.577 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/users/profile",
+  "statusCode": 401,
+  "responseTime": "6ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:05.706 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/users/profile",
+  "statusCode": 401,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:05.864 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/users/profile",
+  "statusCode": 401,
+  "responseTime": "2ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:05.990 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/users/profile",
+  "statusCode": 401,
+  "responseTime": "2ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:06.117 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/users/profile",
+  "statusCode": 401,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:06.235 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/users/profile",
+  "statusCode": 401,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:06.364 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/wallet/balance",
+  "statusCode": 401,
+  "responseTime": "2ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:06.490 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/wallet/balance",
+  "statusCode": 401,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:06.602 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/wallet/balance",
+  "statusCode": 401,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:06.715 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/wallet/balance",
+  "statusCode": 401,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:06.846 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/wallet/balance",
+  "statusCode": 401,
+  "responseTime": "2ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:06.974 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/wallet/balance",
+  "statusCode": 401,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:07.105 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/wallet/balance",
+  "statusCode": 401,
+  "responseTime": "5ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:07.219 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/wallet/balance",
+  "statusCode": 401,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:07.342 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/wallet/balance",
+  "statusCode": 401,
+  "responseTime": "2ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:07.460 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/wallet/balance",
+  "statusCode": 401,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 11:22:37.898 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 11:22:38.077 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 10:22:38.856 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "2ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 11:22:38.632 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 10:22:39.161 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "10ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:39.396 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:39.600 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "0ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:39.984 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "35ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:40.264 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 11:22:39.951 [INFO]: Database tables synced successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:22:39.963 [INFO]: Server started successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 10:22:40.461 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:40.582 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:40.714 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "0ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:40.829 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:40.953 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:41.094 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "12ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:41.126 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "7ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:41.246 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:41.263 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:41.384 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:41.463 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "12ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:41.578 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "2ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:41.598 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:41.711 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:41.731 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:41.848 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:41.885 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "4ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:42.018 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:42.038 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:42.160 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:42.178 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:42.296 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "2ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:42.314 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:42.429 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "3ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:22:42.477 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "4ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 11:23:43.823 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 11:23:44.588 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:23:45.058 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:23:46.009 [INFO]: Database tables synced successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:23:46.241 [INFO]: Server started successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 11:24:01.960 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 11:24:01.988 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:24:02.185 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:24:02.556 [INFO]: Database tables synced successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:24:02.568 [INFO]: Server started successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 11:24:14.727 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 11:24:14.868 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:24:15.460 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:24:15.716 [INFO]: Database tables synced successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:24:34.373 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 11:24:34.410 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:24:34.667 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:24:34.845 [INFO]: Database tables synced successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:24:34.859 [INFO]: Server started successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 11:27:32.811 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 11:27:32.838 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:27:33.025 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:27:33.145 [INFO]: Database tables synced successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:27:33.155 [INFO]: Server started successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 10:34:50.277 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "3ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:34:57.279 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/admin/dashboard/stats",
+  "statusCode": 404,
+  "responseTime": "3ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:35:04.944 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/admin/dashboard/stats",
+  "statusCode": 404,
+  "responseTime": "4ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:35:12.479 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/users/profile",
+  "statusCode": 401,
+  "responseTime": "7ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:35:28.056 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/admin/dashboard/stats",
+  "statusCode": 404,
+  "responseTime": "0ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 11:36:02.509 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 11:36:02.789 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:36:04.260 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:36:05.124 [INFO]: Database tables synced successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:36:05.143 [INFO]: Server started successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 10:37:21.554 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/admin/dashboard/stats",
+  "statusCode": 404,
+  "responseTime": "1ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:37:26.869 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/admin/dashboard/stats",
+  "statusCode": 404,
+  "responseTime": "1ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:37:41.369 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/admin/users",
+  "statusCode": 404,
+  "responseTime": "1ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:38:11.051 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/admin",
+  "statusCode": 404,
+  "responseTime": "8ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 11:38:22.241 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 11:38:22.271 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:38:22.392 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:38:22.483 [INFO]: Database tables synced successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:38:22.492 [INFO]: Server started successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 10:38:37.453 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/admin/test",
+  "statusCode": 404,
+  "responseTime": "1ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:38:46.577 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/admin/test",
+  "statusCode": 404,
+  "responseTime": "1ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 11:39:27.243 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 11:39:27.291 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:39:27.517 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:39:27.726 [INFO]: Database tables synced successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:39:27.734 [INFO]: Server started successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 10:39:35.458 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/admin/test",
+  "statusCode": 404,
+  "responseTime": "1ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:39:43.922 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/admin/test",
+  "statusCode": 404,
+  "responseTime": "1ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 11:40:00.396 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 11:40:00.426 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:40:00.624 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:40:00.769 [INFO]: Database tables synced successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:40:00.781 [INFO]: Server started successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 10:41:06.571 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/admin/test",
+  "statusCode": 404,
+  "responseTime": "3ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:41:27.384 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/admin/test",
+  "statusCode": 404,
+  "responseTime": "1ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 11:41:56.210 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 11:41:56.222 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:41:56.367 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:41:56.484 [INFO]: Database tables synced successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:41:56.498 [INFO]: Server started successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 11:42:42.918 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 11:42:42.943 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:42:43.161 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:42:43.336 [INFO]: Database tables synced successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:42:43.344 [INFO]: Server started successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 10:42:52.884 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/admin-debug",
+  "statusCode": 404,
+  "responseTime": "1ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:42:59.406 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/admin-debug",
+  "statusCode": 404,
+  "responseTime": "2ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:43:09.466 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "0ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 11:43:55.766 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 11:43:55.774 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:43:55.850 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:43:55.916 [INFO]: Database tables synced successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:43:55.920 [INFO]: Server started successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 11:45:35.085 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 11:45:35.119 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:45:35.392 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:45:35.582 [INFO]: Database tables synced successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:45:35.592 [INFO]: Server started successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 11:45:47.347 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 11:45:47.392 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:45:47.576 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:45:47.741 [INFO]: Database tables synced successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:45:47.786 [INFO]: Server started successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 10:46:36.738 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/admin/test",
+  "statusCode": 404,
+  "responseTime": "4ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:46:44.976 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/admin/test",
+  "statusCode": 404,
+  "responseTime": "1ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:46:53.271 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:47:30.102 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/admin/test",
+  "statusCode": 404,
+  "responseTime": "1ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:47:35.625 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/admin/test",
+  "statusCode": 404,
+  "responseTime": "0ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:54:58.489 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/admin/test",
+  "statusCode": 404,
+  "responseTime": "4ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:55:08.370 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/admin/test",
+  "statusCode": 404,
+  "responseTime": "1ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:56:08.865 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/admin/direct-test",
+  "statusCode": 404,
+  "responseTime": "1ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:56:14.994 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/admin/direct-test",
+  "statusCode": 404,
+  "responseTime": "1ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 10:56:23.843 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::ffff:172.24.0.1",
+  "userId": "anonymous"
+}
+2025-10-04 11:57:37.056 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 11:57:37.072 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:57:37.219 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:57:37.425 [INFO]: Database tables synced successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:57:37.454 [INFO]: Server started successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 11:58:35.449 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 11:58:35.482 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:58:35.599 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:58:35.735 [INFO]: Database tables synced successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:58:35.771 [INFO]: Server started successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 11:58:59.001 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 11:58:59.048 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:58:59.284 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:58:59.449 [INFO]: Database tables synced successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 11:58:59.461 [INFO]: Server started successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 11:59:03.460 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/admin/test",
+  "statusCode": 200,
+  "responseTime": "4ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 11:59:15.890 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/admin/test",
+  "statusCode": 200,
+  "responseTime": "2ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 11:59:24.267 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/admin/dashboard/stats",
+  "statusCode": 401,
+  "responseTime": "27ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 11:59:32.597 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/admin/dashboard/stats",
+  "statusCode": 401,
+  "responseTime": "111ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:02:40.013 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "2ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:03:09.338 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "2ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:11:40.665 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/admin/dashboard/stats",
+  "statusCode": 401,
+  "responseTime": "3ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:11:48.334 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/admin/dashboard/stats",
+  "statusCode": 401,
+  "responseTime": "1ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:20:46.585 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "OPTIONS",
+  "url": "/users/login",
+  "statusCode": 204,
+  "responseTime": "2ms",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:20:47.280 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "POST",
+  "url": "/users/login",
+  "statusCode": 404,
+  "responseTime": "679ms",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:21:30.938 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "POST",
+  "url": "/users/login",
+  "statusCode": 404,
+  "responseTime": "28ms",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:22:40.843 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "POST",
+  "url": "/users/login",
+  "statusCode": 404,
+  "responseTime": "4ms",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:23:08.134 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "POST",
+  "url": "/users/login",
+  "statusCode": 404,
+  "responseTime": "7ms",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:28:00.723 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/admin/dashboard/stats",
+  "statusCode": 401,
+  "responseTime": "2ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:28:00.978 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/admin/users",
+  "statusCode": 401,
+  "responseTime": "1ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:28:01.106 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/admin/groups",
+  "statusCode": 401,
+  "responseTime": "1ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:28:57.270 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "0ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:29:08.121 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:29:16.060 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "POST",
+  "url": "/users/signup",
+  "statusCode": 404,
+  "responseTime": "3ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:29:21.616 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "POST",
+  "url": "/users/signup",
+  "statusCode": 429,
+  "responseTime": "1ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:29:40.112 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "POST",
+  "url": "/users/signup",
+  "statusCode": 429,
+  "responseTime": "1ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:29:49.545 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/livestock",
+  "statusCode": 404,
+  "responseTime": "4ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:29:55.765 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/livestock",
+  "statusCode": 404,
+  "responseTime": "9ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:30:10.512 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/livestock",
+  "statusCode": 404,
+  "responseTime": "1ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:30:26.309 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/livestocks",
+  "statusCode": 404,
+  "responseTime": "3ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:30:32.165 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/livestocks",
+  "statusCode": 404,
+  "responseTime": "3ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:30:37.236 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/livestocks",
+  "statusCode": 404,
+  "responseTime": "1ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:30:42.245 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/groups/active",
+  "statusCode": 404,
+  "responseTime": "2ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:30:46.801 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/groups/active",
+  "statusCode": 404,
+  "responseTime": "1ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:33:30.449 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 12:33:30.488 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 12:33:31.613 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 12:33:31.773 [INFO]: Database tables synced successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 12:33:31.783 [INFO]: Server started successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 12:33:41.339 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/livestocks",
+  "statusCode": 401,
+  "responseTime": "8ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:33:48.485 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/livestocks",
+  "statusCode": 401,
+  "responseTime": "12ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:33:55.349 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "POST",
+  "url": "/users/signup",
+  "statusCode": 500,
+  "responseTime": "198ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:34:14.877 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "POST",
+  "url": "/users/signup",
+  "statusCode": 500,
+  "responseTime": "19ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:34:35.019 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "POST",
+  "url": "/users/signup",
+  "statusCode": 200,
+  "responseTime": "231ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:34:44.871 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "POST",
+  "url": "/users/signup",
+  "statusCode": 200,
+  "responseTime": "198ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:35:06.434 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "POST",
+  "url": "/users/login",
+  "statusCode": 400,
+  "responseTime": "5ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:35:12.333 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "POST",
+  "url": "/users/login",
+  "statusCode": 429,
+  "responseTime": "3ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:35:18.443 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/groups/active",
+  "statusCode": 401,
+  "responseTime": "2ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:35:24.116 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/groups/active",
+  "statusCode": 401,
+  "responseTime": "8ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:35:30.680 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "POST",
+  "url": "/groups/create/start",
+  "statusCode": 401,
+  "responseTime": "12ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:35:36.699 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "POST",
+  "url": "/groups/create/start",
+  "statusCode": 401,
+  "responseTime": "5ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:35:45.837 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "POST",
+  "url": "/groups/123/join/start",
+  "statusCode": 401,
+  "responseTime": "4ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:35:51.898 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "POST",
+  "url": "/groups/123/join/start",
+  "statusCode": 401,
+  "responseTime": "3ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:35:57.553 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/wallet/balance",
+  "statusCode": 401,
+  "responseTime": "6ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:02.890 [WARN]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/wallet/balance",
+  "statusCode": 401,
+  "responseTime": "3ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:45.723 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "curl/8.4.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:56.323 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:56.339 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "0ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:56.460 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "0ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:56.586 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:56.719 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "3ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:56.843 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:56.986 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "2ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:57.113 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "2ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:57.244 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:57.387 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:57.518 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:57.639 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "3ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:57.652 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "3ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:57.770 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:57.775 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:57.893 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:57.905 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:58.020 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "2ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:58.035 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:58.151 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "3ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:58.172 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "6ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:58.293 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "3ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:58.334 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "4ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:58.474 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "2ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:58.492 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:58.608 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:58.626 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:58.770 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "7ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:58.798 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "5ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:58.924 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "2ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:36:58.941 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "2ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:00.186 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "0ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:00.212 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "0ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:00.274 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "0ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:00.336 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:00.404 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:00.487 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "0ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:00.585 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:00.679 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:00.758 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "0ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:00.851 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:00.935 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "0ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:01.035 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:01.099 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "0ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:01.185 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "0ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:01.249 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:01.314 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "0ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:01.387 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:01.464 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "0ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:01.531 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "0ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:01.601 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:01.665 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/health",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:01.729 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "0ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:01.738 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:01.801 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "2ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:01.809 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "3ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:01.880 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "0ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:01.887 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "0ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:01.961 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "3ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:01.974 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "2ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:02.032 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:02.044 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "2ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:02.110 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:02.118 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "2ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:02.195 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "2ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:02.205 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:02.277 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:02.284 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "0ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:02.353 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:02.362 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:02.430 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:02.435 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:02.527 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "5ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:02.547 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:02.617 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "2ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:02.633 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:02.698 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "5ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:02.705 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:02.780 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:02.786 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:02.867 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:02.881 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs/",
+  "statusCode": 200,
+  "responseTime": "1ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:38:02.949 [INFO]: HTTP Request
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "method": "GET",
+  "url": "/api-docs",
+  "statusCode": 301,
+  "responseTime": "4ms",
+  "userAgent": "axios/1.11.0",
+  "ip": "::1",
+  "userId": "anonymous"
+}
+2025-10-04 12:39:22.843 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}
+2025-10-04 12:39:22.874 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 12:39:23.020 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 12:39:23.145 [INFO]: Database tables synced successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-10-04 12:39:23.153 [INFO]: Server started successfully
+{
+  "service": "farmeely-backend",
+  "environment": "development",
+  "port": "2025"
+}

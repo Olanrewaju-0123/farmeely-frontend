@@ -1,0 +1,290 @@
+2025-09-09 13:29:15.252 [ERROR]: uncaughtException: EPIPE: broken pipe, write
+Error: EPIPE: broken pipe, write
+    at Socket._write (node:internal/net:63:18)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (C:\Users\DELL 7389\Desktop\farmeely-frontend\node_modules\winston\lib\winston\transports\console.js:79:23)
+    at Console._write (C:\Users\DELL 7389\Desktop\farmeely-frontend\node_modules\winston-transport\modern.js:103:17)
+    at doWrite (C:\Users\DELL 7389\Desktop\farmeely-frontend\node_modules\readable-stream\lib\_stream_writable.js:390:139)
+    at writeOrBuffer (C:\Users\DELL 7389\Desktop\farmeely-frontend\node_modules\readable-stream\lib\_stream_writable.js:381:5)
+    at Writable.write (C:\Users\DELL 7389\Desktop\farmeely-frontend\node_modules\readable-stream\lib\_stream_writable.js:302:11)
+    at DerivedLogger.ondata (C:\Users\DELL 7389\Desktop\farmeely-frontend\node_modules\readable-stream\lib\_stream_readable.js:629:20)
+Error: EPIPE: broken pipe, write
+    at Socket._write (node:internal/net:63:18)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (C:\Users\DELL 7389\Desktop\farmeely-frontend\node_modules\winston\lib\winston\transports\console.js:79:23)
+    at Console._write (C:\Users\DELL 7389\Desktop\farmeely-frontend\node_modules\winston-transport\modern.js:103:17)
+    at doWrite (C:\Users\DELL 7389\Desktop\farmeely-frontend\node_modules\readable-stream\lib\_stream_writable.js:390:139)
+    at writeOrBuffer (C:\Users\DELL 7389\Desktop\farmeely-frontend\node_modules\readable-stream\lib\_stream_writable.js:381:5)
+    at Writable.write (C:\Users\DELL 7389\Desktop\farmeely-frontend\node_modules\readable-stream\lib\_stream_writable.js:302:11)
+    at DerivedLogger.ondata (C:\Users\DELL 7389\Desktop\farmeely-frontend\node_modules\readable-stream\lib\_stream_readable.js:629:20)
+{
+  "error": {
+    "errno": -4047,
+    "syscall": "write",
+    "code": "EPIPE"
+  },
+  "exception": true,
+  "date": "Tue Sep 09 2025 13:29:15 GMT+0100 (West Africa Standard Time)",
+  "process": {
+    "pid": 19024,
+    "uid": null,
+    "gid": null,
+    "cwd": "C:\\Users\\DELL 7389\\Desktop\\farmeely-frontend\\backend",
+    "execPath": "C:\\Program Files\\nodejs\\node.exe",
+    "version": "v22.17.1",
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\DELL 7389\\Desktop\\farmeely-frontend\\backend\\index.js"
+    ],
+    "memoryUsage": {
+      "rss": 134094848,
+      "heapTotal": 91062272,
+      "heapUsed": 36051448,
+      "external": 3643057,
+      "arrayBuffers": 81023
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 242663.14
+  },
+  "trace": [
+    {
+      "column": 18,
+      "file": "node:internal/net",
+      "function": "Socket._write",
+      "line": 63,
+      "method": "_write",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:internal/streams/writable",
+      "function": "writeOrBuffer",
+      "line": 572,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/streams/writable",
+      "function": "_write",
+      "line": 501,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/streams/writable",
+      "function": "Writable.write",
+      "line": 510,
+      "method": "write",
+      "native": false
+    },
+    {
+      "column": 23,
+      "file": "C:\\Users\\DELL 7389\\Desktop\\farmeely-frontend\\node_modules\\winston\\lib\\winston\\transports\\console.js",
+      "function": "Console.log",
+      "line": 79,
+      "method": "log",
+      "native": false
+    },
+    {
+      "column": 17,
+      "file": "C:\\Users\\DELL 7389\\Desktop\\farmeely-frontend\\node_modules\\winston-transport\\modern.js",
+      "function": "Console._write",
+      "line": 103,
+      "method": "_write",
+      "native": false
+    },
+    {
+      "column": 139,
+      "file": "C:\\Users\\DELL 7389\\Desktop\\farmeely-frontend\\node_modules\\readable-stream\\lib\\_stream_writable.js",
+      "function": "doWrite",
+      "line": 390,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 5,
+      "file": "C:\\Users\\DELL 7389\\Desktop\\farmeely-frontend\\node_modules\\readable-stream\\lib\\_stream_writable.js",
+      "function": "writeOrBuffer",
+      "line": 381,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 11,
+      "file": "C:\\Users\\DELL 7389\\Desktop\\farmeely-frontend\\node_modules\\readable-stream\\lib\\_stream_writable.js",
+      "function": "Writable.write",
+      "line": 302,
+      "method": "write",
+      "native": false
+    },
+    {
+      "column": 20,
+      "file": "C:\\Users\\DELL 7389\\Desktop\\farmeely-frontend\\node_modules\\readable-stream\\lib\\_stream_readable.js",
+      "function": "DerivedLogger.ondata",
+      "line": 629,
+      "method": "ondata",
+      "native": false
+    }
+  ],
+  "service": "farmeely-backend",
+  "environment": "development"
+}
+2025-09-09 13:33:45.975 [ERROR]: uncaughtException: Missing catch or finally after try
+C:\Users\DELL 7389\Desktop\farmeely-frontend\backend\controllers\userCtrl.js:184
+};
+^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1662:18)
+    at Module._compile (node:internal/modules/cjs/loader:1704:20)
+    at Object..js (node:internal/modules/cjs/loader:1895:10)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+    at Module.require (node:internal/modules/cjs/loader:1487:12)
+    at require (node:internal/modules/helpers:135:16)
+    at Object.<anonymous> (C:\Users\DELL 7389\Desktop\farmeely-frontend\backend\routes\userRouter.js:32:5)
+C:\Users\DELL 7389\Desktop\farmeely-frontend\backend\controllers\userCtrl.js:184
+};
+^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1662:18)
+    at Module._compile (node:internal/modules/cjs/loader:1704:20)
+    at Object..js (node:internal/modules/cjs/loader:1895:10)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+    at Module.require (node:internal/modules/cjs/loader:1487:12)
+    at require (node:internal/modules/helpers:135:16)
+    at Object.<anonymous> (C:\Users\DELL 7389\Desktop\farmeely-frontend\backend\routes\userRouter.js:32:5)
+{
+  "error": {},
+  "exception": true,
+  "date": "Tue Sep 09 2025 13:33:45 GMT+0100 (West Africa Standard Time)",
+  "process": {
+    "pid": 24452,
+    "uid": null,
+    "gid": null,
+    "cwd": "C:\\Users\\DELL 7389\\Desktop\\farmeely-frontend\\backend",
+    "execPath": "C:\\Program Files\\nodejs\\node.exe",
+    "version": "v22.17.1",
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\DELL 7389\\Desktop\\farmeely-frontend\\backend\\index.js"
+    ],
+    "memoryUsage": {
+      "rss": 120729600,
+      "heapTotal": 77275136,
+      "heapUsed": 52971232,
+      "external": 2396654,
+      "arrayBuffers": 19071
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 242933.859
+  },
+  "trace": [
+    {
+      "column": 18,
+      "file": "node:internal/modules/cjs/loader",
+      "function": "wrapSafe",
+      "line": 1662,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 20,
+      "file": "node:internal/modules/cjs/loader",
+      "function": "Module._compile",
+      "line": 1704,
+      "method": "_compile",
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/modules/cjs/loader",
+      "function": "Object..js",
+      "line": 1895,
+      "method": ".js",
+      "native": false
+    },
+    {
+      "column": 32,
+      "file": "node:internal/modules/cjs/loader",
+      "function": "Module.load",
+      "line": 1465,
+      "method": "load",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:internal/modules/cjs/loader",
+      "function": "Function._load",
+      "line": 1282,
+      "method": "_load",
+      "native": false
+    },
+    {
+      "column": 14,
+      "file": "node:diagnostics_channel",
+      "function": "TracingChannel.traceSync",
+      "line": 322,
+      "method": "traceSync",
+      "native": false
+    },
+    {
+      "column": 24,
+      "file": "node:internal/modules/cjs/loader",
+      "function": "wrapModuleLoad",
+      "line": 235,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:internal/modules/cjs/loader",
+      "function": "Module.require",
+      "line": 1487,
+      "method": "require",
+      "native": false
+    },
+    {
+      "column": 16,
+      "file": "node:internal/modules/helpers",
+      "function": "require",
+      "line": 135,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 5,
+      "file": "C:\\Users\\DELL 7389\\Desktop\\farmeely-frontend\\backend\\routes\\userRouter.js",
+      "function": null,
+      "line": 32,
+      "method": null,
+      "native": false
+    }
+  ],
+  "service": "farmeely-backend",
+  "environment": "development"
+}

@@ -1,0 +1,27 @@
+2025-09-29 14:08:43.187 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "port": "2025"
+}
+2025-09-29 14:08:43.302 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "production"
+}
+2025-09-29 14:08:44.773 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "production"
+}
+2025-09-29 14:08:46.330 [INFO]: Database tables synced successfully
+{
+  "service": "farmeely-backend",
+  "environment": "production"
+}
+2025-09-29 14:08:46.358 [INFO]: Server started successfully
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "port": "2025"
+}

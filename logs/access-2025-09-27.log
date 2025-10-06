@@ -1,0 +1,229 @@
+2025-09-27 17:41:23.111 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "port": "2025"
+}
+2025-09-27 17:43:33.626 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "port": "2025"
+}
+2025-09-27 17:45:26.941 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "port": "2025"
+}
+2025-09-27 17:49:55.662 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "port": "2025"
+}
+2025-09-27 18:11:18.123 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "port": "2025"
+}
+2025-09-27 18:12:17.809 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "port": "2025"
+}
+2025-09-27 18:14:42.055 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "port": "2025"
+}
+2025-09-27 18:16:08.988 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "port": "2025"
+}
+2025-09-27 18:16:09.075 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "production"
+}
+2025-09-27 18:16:09.584 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "production"
+}
+2025-09-27 18:19:31.658 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "port": "2025"
+}
+2025-09-27 18:19:31.732 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "production"
+}
+2025-09-27 18:19:32.759 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "production"
+}
+2025-09-27 18:20:46.390 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "port": "2025"
+}
+2025-09-27 18:20:46.479 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "production"
+}
+2025-09-27 18:20:46.944 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "production"
+}
+2025-09-27 18:22:45.555 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "port": "2025"
+}
+2025-09-27 18:22:45.597 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "production"
+}
+2025-09-27 18:22:45.822 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "production"
+}
+2025-09-27 18:23:48.147 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "port": "2025"
+}
+2025-09-27 18:23:48.229 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "production"
+}
+2025-09-27 18:23:48.884 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "production"
+}
+2025-09-27 18:39:36.295 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "port": "2025"
+}
+2025-09-27 18:39:39.259 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "production"
+}
+2025-09-27 18:39:45.195 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "production"
+}
+2025-09-27 18:46:39.949 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "port": "2025"
+}
+2025-09-27 18:46:40.044 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "production"
+}
+2025-09-27 18:46:40.591 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "production"
+}
+2025-09-27 18:49:39.694 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "port": "2025"
+}
+2025-09-27 18:49:39.782 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "production"
+}
+2025-09-27 18:49:40.486 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "production"
+}
+2025-09-27 18:52:48.430 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "port": "2025"
+}
+2025-09-27 18:52:50.509 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "production"
+}
+2025-09-27 18:53:00.926 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "production"
+}
+2025-09-27 18:54:50.683 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "port": "2025"
+}
+2025-09-27 18:54:50.889 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "production"
+}
+2025-09-27 18:54:52.871 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "production"
+}
+2025-09-27 18:56:40.795 [INFO]: Application starting up
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "port": "2025"
+}
+2025-09-27 18:56:40.868 [INFO]: Cache service initialized
+{
+  "service": "farmeely-backend",
+  "environment": "production"
+}
+2025-09-27 18:56:41.225 [INFO]: Database connection established successfully
+{
+  "service": "farmeely-backend",
+  "environment": "production"
+}
+2025-09-27 18:56:41.562 [INFO]: Database tables synced successfully
+{
+  "service": "farmeely-backend",
+  "environment": "production"
+}
+2025-09-27 18:56:41.585 [INFO]: Server started successfully
+{
+  "service": "farmeely-backend",
+  "environment": "production",
+  "port": "2025"
+}

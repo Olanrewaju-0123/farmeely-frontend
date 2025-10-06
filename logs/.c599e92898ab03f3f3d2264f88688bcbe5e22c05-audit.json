@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 7
+    },
+    "auditLog": "C:\\Users\\DELL 7389\\Desktop\\farmeely-frontend\\backend\\logs\\.c599e92898ab03f3f3d2264f88688bcbe5e22c05-audit.json",
+    "files": [
+        {
+            "date": 1759573312207,
+            "name": "C:\\Users\\DELL 7389\\Desktop\\farmeely-frontend\\backend\\logs\\access-2025-10-04.log",
+            "hash": "b41b90a4b30a9b26497424483d875472a7c451a771a01a4fd02c008caaa1f539"
+        }
+    ],
+    "hashType": "sha256"
+}
