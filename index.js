@@ -15,7 +15,7 @@ const app = express();
 const sequelize = require("./config/sequelize");
 const cacheService = require("./services/cache");
 // Use serverless logger for Vercel deployment
-const logger = require("./services/logger-fixed");
+const logger = require("./services/logger");
 const {
   requestLogger,
   errorLogger,
