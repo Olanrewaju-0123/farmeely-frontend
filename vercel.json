@@ -12,9 +12,17 @@
     {
       "src": "api/simple-test.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "api/minimal.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
+    {
+      "src": "/minimal",
+      "dest": "api/minimal.js"
+    },
     {
       "src": "/simple-test",
       "dest": "api/simple-test.js"
