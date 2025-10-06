@@ -1,4 +1,4 @@
-// Vercel API entry point
-const app = require('../index');
+// Vercel serverless function
+const app = require("../backend/index");
 
 module.exports = app;
