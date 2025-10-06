@@ -12,6 +12,6 @@
       "dest": "api/index.js"
     }
   ],
-  "installCommand": "rm -rf node_modules package-lock.json && npm install",
+  "installCommand": "rm -rf node_modules package-lock.json && npm install --force",
   "buildCommand": "echo 'Backend deployment - dependencies installed'"
 }
