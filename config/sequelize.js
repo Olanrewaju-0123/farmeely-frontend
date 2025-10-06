@@ -5,6 +5,15 @@ const DATABASE_PASSWORD = process.env.DATABASE_PASSWORD || "password";
 const DATABASE_HOST = process.env.DATABASE_HOST || "localhost";
 const DATABASE_PORT = process.env.DATABASE_PORT || 5432;
 
+// Try to require pg explicitly
+let pg;
+try {
+  pg = require('pg');
+} catch (error) {
+  console.error('pg package not found, trying alternative approach');
+  // Use a different approach if pg is not available
+}
+
 const sequelize = new Sequelize(
   DATABASE_NAME,
   DATABASE_USER,
