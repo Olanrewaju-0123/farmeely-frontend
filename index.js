@@ -14,7 +14,8 @@ const swaggerSpecs = require("./config/swagger");
 const app = express();
 const sequelize = require("./config/sequelize");
 const cacheService = require("./services/cache");
-const logger = require("./services/logger");
+// Use serverless logger for Vercel deployment
+const logger = require("./services/logger-serverless");
 const {
   requestLogger,
   errorLogger,

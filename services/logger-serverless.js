@@ -1,43 +1,7 @@
+// Serverless-compatible logger for Vercel
 const winston = require("winston");
-const DailyRotateFile = require("winston-daily-rotate-file");
-const path = require("path");
 
-// Check if we're in a serverless environment (Vercel)
-const isServerless = process.env.VERCEL || process.env.NODE_ENV === "production";
-
-// Only create logs directory if not in serverless environment
-let logsDir;
-if (!isServerless) {
-  const fs = require("fs");
-  logsDir = path.join(__dirname, "../logs");
-  if (!fs.existsSync(logsDir)) {
-    fs.mkdirSync(logsDir, { recursive: true });
-  }
-}
-
-// Custom log format
-const logFormat = winston.format.combine(
-  winston.format.timestamp({
-    format: "YYYY-MM-DD HH:mm:ss.SSS",
-  }),
-  winston.format.errors({ stack: true }),
-  winston.format.json(),
-  winston.format.printf(({ timestamp, level, message, stack, ...meta }) => {
-    let log = `${timestamp} [${level.toUpperCase()}]: ${message}`;
-
-    if (stack) {
-      log += `\n${stack}`;
-    }
-
-    if (Object.keys(meta).length > 0) {
-      log += `\n${JSON.stringify(meta, null, 2)}`;
-    }
-
-    return log;
-  })
-);
-
-// Console format for development
+// Console format for serverless
 const consoleFormat = winston.format.combine(
   winston.format.colorize(),
   winston.format.timestamp({
@@ -52,61 +16,25 @@ const consoleFormat = winston.format.combine(
   })
 );
 
-// Create logger instance
+// Create logger instance for serverless (console only)
 const logger = winston.createLogger({
   level: process.env.LOG_LEVEL || "info",
-  format: logFormat,
+  format: winston.format.combine(
+    winston.format.timestamp({
+      format: "YYYY-MM-DD HH:mm:ss.SSS",
+    }),
+    winston.format.errors({ stack: true }),
+    winston.format.json()
+  ),
   defaultMeta: {
     service: "farmeely-backend",
     environment: process.env.NODE_ENV || "development",
   },
   transports: [
-    // Console transport for development
+    // Console transport only for serverless
     new winston.transports.Console({
       format: consoleFormat,
       silent: process.env.NODE_ENV === "test",
-    }),
-
-    // Combined log file (all logs)
-    new DailyRotateFile({
-      filename: path.join(logsDir, "combined-%DATE%.log"),
-      datePattern: "YYYY-MM-DD",
-      maxSize: "20m",
-      maxFiles: "14d",
-      format: logFormat,
-    }),
-
-    // Error log file (errors only)
-    new DailyRotateFile({
-      filename: path.join(logsDir, "error-%DATE%.log"),
-      datePattern: "YYYY-MM-DD",
-      level: "error",
-      maxSize: "20m",
-      maxFiles: "30d",
-      format: logFormat,
-    }),
-
-    // Access log file (HTTP requests)
-    new DailyRotateFile({
-      filename: path.join(logsDir, "access-%DATE%.log"),
-      datePattern: "YYYY-MM-DD",
-      maxSize: "20m",
-      maxFiles: "7d",
-      format: logFormat,
-    }),
-  ],
-
-  // Handle exceptions and rejections
-  exceptionHandlers: [
-    new winston.transports.File({
-      filename: path.join(logsDir, "exceptions.log"),
-      format: logFormat,
-    }),
-  ],
-  rejectionHandlers: [
-    new winston.transports.File({
-      filename: path.join(logsDir, "rejections.log"),
-      format: logFormat,
     }),
   ],
 });
