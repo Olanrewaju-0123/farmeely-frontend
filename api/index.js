@@ -8,4 +8,6 @@ testConnection().then((result) => {
   console.log("Database test result:", result);
 });
 
+// Export as default for Vercel
 module.exports = app;
+module.exports.default = app;

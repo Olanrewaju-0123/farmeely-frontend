@@ -1,46 +1,47 @@
-require('dotenv').config();
-const nodemailer = require('nodemailer');
+require("dotenv").config();
+const nodemailer = require("nodemailer");
 
 // Create Gmail SMTP transporter
 const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST || 'smtp.gmail.com',
-    port: process.env.SMTP_PORT || 587,
-    secure: process.env.SMTP_PORT === 465, // true for 465, false for other ports
-    auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-    },
+  host: process.env.SMTP_HOST || "smtp.gmail.com",
+  port: process.env.SMTP_PORT || 587,
+  secure: process.env.SMTP_PORT === 465, // true for 465, false for other ports
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
+  },
 });
 
 const sendEmail = (email, message, headers) => {
-    const mailOptions = {
-        from: `${process.env.FROM_NAME || 'Farmeely'} <${process.env.SMTP_USER}>`,
-        to: email,
-        subject: headers,
-        text: message,
-        html: `<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+  const mailOptions = {
+    from: `${process.env.FROM_NAME || "Farmeely"} <${process.env.SMTP_USER}>`,
+    to: email,
+    subject: headers,
+    text: message,
+    html: `<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
             <h2 style="color: #333;">Farmeely Notification</h2>
             <p>${message}</p>
             <p>Best regards,<br>The Farmeely Team</p>
-        </div>`
-    };
+        </div>`,
+  };
 
-    transporter.sendMail(mailOptions)
+  transporter
+    .sendMail(mailOptions)
     .then(() => {
-        console.log("Email sent successfully");
+      console.log("Email sent successfully");
     })
     .catch((error) => {
-        console.error("Email sending failed:", error);
+      console.error("Email sending failed:", error);
     });
 };
 
 // Enhanced email functions for different use cases
 const sendWelcomeEmail = (email, firstName) => {
-    const mailOptions = {
-        from: `${process.env.FROM_NAME || 'Farmeely'} <${process.env.SMTP_USER}>`,
-        to: email,
-        subject: "Welcome to Farmeely!",
-        html: `
+  const mailOptions = {
+    from: `${process.env.FROM_NAME || "Farmeely"} <${process.env.SMTP_USER}>`,
+    to: email,
+    subject: "Welcome to Farmeely!",
+    html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #333;">Welcome to Farmeely, ${firstName}!</h2>
           <p>Thank you for joining Farmeely. You can now create and join farming groups.</p>
@@ -48,17 +49,17 @@ const sendWelcomeEmail = (email, firstName) => {
           <p>Best regards,<br>The Farmeely Team</p>
         </div>
       `,
-    };
+  };
 
-    return transporter.sendMail(mailOptions);
+  return transporter.sendMail(mailOptions);
 };
 
 const sendOTPEmail = (email, otp, firstName) => {
-    const mailOptions = {
-        from: `${process.env.FROM_NAME || 'Farmeely'} <${process.env.SMTP_USER}>`,
-        to: email,
-        subject: "Verification Code - Farmeely",
-        html: `
+  const mailOptions = {
+    from: `${process.env.FROM_NAME || "Farmeely"} <${process.env.SMTP_USER}>`,
+    to: email,
+    subject: "Verification Code - Farmeely",
+    html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
           <div style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%); padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
             <h1 style="color: white; margin: 0; font-size: 28px;">Farmeely</h1>
@@ -87,18 +88,20 @@ const sendOTPEmail = (email, otp, firstName) => {
           </div>
         </div>
       `,
-    };
+  };
 
-    return transporter.sendMail(mailOptions);
+  return transporter.sendMail(mailOptions);
 };
 
 const sendPasswordResetEmail = (email, resetToken, firstName) => {
-    const resetUrl = `${process.env.FRONTEND_URL || 'http://localhost:3000'}/reset-password?token=${resetToken}`;
-    const mailOptions = {
-        from: `${process.env.FROM_NAME || 'Farmeely'} <${process.env.SMTP_USER}>`,
-        to: email,
-        subject: "Password Reset Request - Farmeely",
-        html: `
+  const resetUrl = `${
+    process.env.FRONTEND_URL || "http://localhost:3000"
+  }/reset-password?token=${resetToken}`;
+  const mailOptions = {
+    from: `${process.env.FROM_NAME || "Farmeely"} <${process.env.SMTP_USER}>`,
+    to: email,
+    subject: "Password Reset Request - Farmeely",
+    html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #333;">Password Reset Request</h2>
           <p>Hi ${firstName},</p>
@@ -109,14 +112,14 @@ const sendPasswordResetEmail = (email, resetToken, firstName) => {
           <p>Best regards,<br>The Farmeely Team</p>
         </div>
       `,
-    };
+  };
 
-    return transporter.sendMail(mailOptions);
+  return transporter.sendMail(mailOptions);
 };
 
 module.exports = {
-    sendEmail,
-    sendWelcomeEmail,
-    sendOTPEmail,
-    sendPasswordResetEmail
+  sendEmail,
+  sendWelcomeEmail,
+  sendOTPEmail,
+  sendPasswordResetEmail,
 };
