@@ -1,5 +1,8 @@
 {
   "version": 2,
+  "buildCommand": "cd frontend && npm run build",
+  "outputDirectory": "frontend/.next",
+  "installCommand": "cd frontend && npm install",
   "functions": {
     "api/index.js": {
       "maxDuration": 30
@@ -7,8 +10,12 @@
   },
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/api/(.*)",
       "dest": "api/index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "frontend/.next"
     }
   ],
   "env": {
