@@ -4,6 +4,14 @@
 -- Enable UUID extension
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
+-- Create ENUM types for PostgreSQL
+CREATE TYPE user_role AS ENUM ('user', 'admin');
+CREATE TYPE group_status AS ENUM ('active', 'inactive', 'completed');
+CREATE TYPE join_status AS ENUM ('pending', 'approved', 'rejected');
+CREATE TYPE transaction_type AS ENUM ('credit', 'debit');
+CREATE TYPE transaction_status AS ENUM ('pending', 'completed', 'failed');
+CREATE TYPE payment_status AS ENUM ('pending', 'completed', 'failed');
+
 -- Users table
 CREATE TABLE IF NOT EXISTS users (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
@@ -12,7 +20,7 @@ CREATE TABLE IF NOT EXISTS users (
     email VARCHAR(255) UNIQUE NOT NULL,
     phoneNumber VARCHAR(20) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
-    role ENUM('user', 'admin') DEFAULT 'user',
+    role user_role DEFAULT 'user',
     isVerified BOOLEAN DEFAULT false,
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -26,7 +34,7 @@ CREATE TABLE IF NOT EXISTS groups (
     totalSlots INTEGER NOT NULL,
     availableSlots INTEGER NOT NULL,
     pricePerSlot DECIMAL(10,2) NOT NULL,
-    status ENUM('active', 'inactive', 'completed') DEFAULT 'active',
+    status group_status DEFAULT 'active',
     createdBy UUID REFERENCES users(id),
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -37,7 +45,7 @@ CREATE TABLE IF NOT EXISTS join_groups (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     userId UUID REFERENCES users(id),
     groupId UUID REFERENCES groups(id),
-    status ENUM('pending', 'approved', 'rejected') DEFAULT 'pending',
+    status join_status DEFAULT 'pending',
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE(userId, groupId)
@@ -58,8 +66,8 @@ CREATE TABLE IF NOT EXISTS transactions (
     userId UUID REFERENCES users(id),
     groupId UUID REFERENCES groups(id),
     amount DECIMAL(10,2) NOT NULL,
-    type ENUM('credit', 'debit') NOT NULL,
-    status ENUM('pending', 'completed', 'failed') DEFAULT 'pending',
+    type transaction_type NOT NULL,
+    status transaction_status DEFAULT 'pending',
     description TEXT,
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -89,7 +97,7 @@ CREATE TABLE IF NOT EXISTS pending_payments (
     userId UUID REFERENCES users(id),
     groupId UUID REFERENCES groups(id),
     amount DECIMAL(10,2) NOT NULL,
-    status ENUM('pending', 'completed', 'failed') DEFAULT 'pending',
+    status payment_status DEFAULT 'pending',
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
